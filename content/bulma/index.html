@@ -27,7 +27,7 @@ this is bulma.html
 
 <div class="container">
     <div class="columns has-pb-2">
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <p style="padding: 10px 0; border-radius: 5px;" class="has-background-primary has-text-centered">
                 <code>First Column</code></p>
             <div class="columns is-multiline is-mobile">
@@ -40,7 +40,7 @@ this is bulma.html
                 </div>
             </div>
         </div>
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <p style="padding: 10px 0; border-radius: 5px;" class="has-background-primary has-text-centered">
                 <code>Second Column</code></p>
             <div class="columns is-multiline is-mobile">
@@ -57,7 +57,7 @@ this is bulma.html
 </div>
 <div class="container">
     <div class="columns has-pb-2">
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <p style="padding: 10px 0; border-radius: 5px;" class="has-background-primary has-text-centered">
                 <code>First Column</code></p>
             <div class="columns is-multiline is-mobile">
@@ -70,7 +70,7 @@ this is bulma.html
                 </div>
             </div>
         </div>
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <p style="padding: 10px 0; border-radius: 5px;" class="has-background-primary has-text-centered">
                 <code>Second Column</code></p>
             <div class="columns is-multiline is-mobile">
@@ -87,7 +87,7 @@ this is bulma.html
 </div>
 <div class="container">
     <div class="columns has-pb-2">
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <p style="padding: 10px 0; border-radius: 5px;" class="has-background-primary has-text-centered">
                 <code>First Column</code></p>
             <div class="columns is-multiline is-mobile">
@@ -100,7 +100,7 @@ this is bulma.html
                 </div>
             </div>
         </div>
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <p style="padding: 10px 0; border-radius: 5px;" class="has-background-primary has-text-centered">
                 <code>Second Column</code></p>
             <div class="columns is-multiline is-mobile">
@@ -134,7 +134,7 @@ this is bulma.html
 
 <div class="container">
     <div class="columns has-pb-2">
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-narrow has-pb-0">
                     <h3 class="title is-4">First Item</h3>
@@ -149,7 +149,7 @@ this is bulma.html
             <p class="has-text-faded">This is a simple sentence demonstrating the paragraph of this section</p>
         </div>
 
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-narrow has-pb-0">
                     <h3 class="title is-4">Second Item</h3>
@@ -163,7 +163,7 @@ this is bulma.html
         </div>
     </div>
     <div class="columns has-pb-2">
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-narrow has-pb-0">
                     <h3 class="title is-4">Third Item</h3>
@@ -175,7 +175,7 @@ this is bulma.html
             </div>
             <p class="has-text-faded">This is a simple sentence demonstrating the paragraph of this section</p>
         </div>
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-narrow has-pb-0">
                     <h3 class="title is-4">Fourth Item</h3>
@@ -190,7 +190,7 @@ this is bulma.html
 
     </div>
     <div class="columns has-pb-2">
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-narrow has-pb-0">
                     <h3 class="title is-4">Fifth Item</h3>
@@ -202,7 +202,7 @@ this is bulma.html
             </div>
             <p class="has-text-faded">This is a simple sentence demonstrating the paragraph of this section</p>
         </div>
-        <div class="column is-half">
+        <div class="column " :class="'is-half':size-width=='1/2'">
             <div class="columns is-multiline is-mobile">
                 <div class="column is-narrow has-pb-0">
                     <h3 class="title is-4">Sixth Item</h3>
@@ -553,23 +553,21 @@ this is bulma.html
     <section class="section" x-data>
         <p class=" is-size-1 has-text-danger">bulma user input</p>
     </section>
-    <!-- Todo : 
-        - modal-background a click target to close the modal fail 
-        - @keydown.escape fail
-    -->
-    <section class="section" x-data="modalOp()" @keydown.escape="cancelModal()"> <!-- 新增 : @keydown.escape="cancelModal()  -->
+
+    <section class="section" x-data="modalOp()" @keydown.escape="cancelModal()">
+        <!-- 新增 : @keydown.escape="cancelModal()  -->
         <p class=" is-size-1 has-text-danger">bulma popup modal</p>
 
         <div class="container">
             <h1 class="title">Bulma Modal Confirmation</h1>
             <p class="subtitle">Displays a modal when button pressed</p>
-            <button class="button" @click="showModal">Show Modal</button>           
+            <button class="button" @click="showModal">Show Modal</button>
             <hr />
-            <p >Last Modal Confirmation: <span x-text="okPressed"></span></p>
+            <p>Last Modal Confirmation: <span x-text="okPressed"></span></p>
         </div>
 
-        <div class="modal" :class="{'is-active': showModalFlag}"   >                      
-            <div class="modal-background"  @click="cancelModal()" ></div>   <!-- 新增 : @click="cancelModal()  -->
+        <div class="modal" :class="{'is-active': showModalFlag}">
+            <div class="modal-background" @click="cancelModal()"></div> <!-- 新增 : @click="cancelModal()  -->
             <div class="modal-card">
                 <header class="modal-card-head">
                     <p class="modal-card-title">Confirmation Modal</p>
@@ -585,7 +583,7 @@ this is bulma.html
             </div>
         </div>
         <script type="text/javascript">
-           
+
             function modalOp() {
                 return {
                     showModalFlag: false,
@@ -607,5 +605,160 @@ this is bulma.html
             }
         </script>
     </section>
+    <!-- Todo: image grid using bulma : refernce : https://www.youtube.com/watch?v=Ng1BL8piOcg -->
+    <section class="section" x-data="imageGrid()">
+        <p class=" is-size-1 has-text-danger">multiline colums Grid layout (多行格狀布局)</p>
+
+        <!-- 
+                 - columns has is-multiline modifier ,each column must has its own size 
+            **** - alpine.js class binding only evaluate the firt class binding expression 
+            -->
+
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half ">
+                <span class="icon has-text-info" @click="layout='is-full'"
+                    @mouseover="mouseover"
+                    @mouseleave="mouseleave">
+                    <i class="fas fa-stop"></i>
+                </span>
+                <span class=" icon has-text-success" @click="layout='is-half'" 
+                    @mouseover="mouseover"
+                    @mouseleave="mouseleave">
+                    <i class="fas  fa-th-large"></i>
+                </span>
+
+                <span class=" icon has-text-danger" @click="layout='is-one-third'"
+                    @mouseover="mouseover"
+                    @mouseleave="mouseleave">
+                    <i class="fas  fa-th"></i>
+                </span>                
+            </div>
+        </div>
+
+
+        <template x-if="layout==='is-full'">
+            <div class="columns is-multiline is-mobile">
+                <div class="column is-full">
+                    First column
+                </div>
+                <div class="column is-full">
+                    Second column
+                </div>
+                <div class="column is-full">
+                    Third column
+                </div>
+                <div class="column is-full">
+                    Fourth column
+                </div>
+                <div class="column is-full">
+                    5th column
+                </div>
+                <div class="column is-full">
+                    6th column
+                </div>
+                <div class="column is-full">
+                    7th column
+                </div>
+                <div class="column is-full">
+                    8th column
+                </div>
+                <div class="column is-full">
+                    9th column
+                </div>
+                <div class="column is-full">
+                    10th column
+                </div>
+            </div>
+        </template>
+
+        <template x-if="layout==='is-half'">
+            <div class="columns is-multiline is-mobile">
+                <div class="column is-half">
+                    First column
+                </div>
+                <div class="column is-half">
+                    Second column
+                </div>
+                <div class="column is-half">
+                    Third column
+                </div>
+                <div class="column is-half">
+                    Fourth column
+                </div>
+                <div class="column is-half">
+                    5th column
+                </div>
+                <div class="column is-half">
+                    6th column
+                </div>
+                <div class="column is-half">
+                    7th column
+                </div>
+                <div class="column is-half">
+                    8th column
+                </div>
+                <div class="column is-half">
+                    9th column
+                </div>
+                <div class="column is-half">
+                    10th column
+                </div>
+            </div>
+        </template>
+        <template x-if="layout==='is-one-third'">
+            <div class="columns is-multiline is-mobile">
+                <div class="column is-one-third">
+                    First column
+                </div>
+                <div class="column is-one-third">
+                    Second column
+                </div>
+                <div class="column is-one-third">
+                    Third column
+                </div>
+                <div class="column is-one-third">
+                    Fourth column
+                </div>
+                <div class="column is-one-third">
+                    5th column
+                </div>
+                <div class="column is-one-third">
+                    6th column
+                </div>
+                <div class="column is-one-third">
+                    7th column
+                </div>
+                <div class="column is-one-third">
+                    8th column
+                </div>
+                <div class="column is-one-third">
+                    9th column
+                </div>
+                <div class="column is-one-third">
+                    10th column
+                </div>
+            </div>
+        </template>
+        <script type="text/javascript">
+            function imageGrid() {
+                return {
+                    layout: 'is-full',
+                    mouseover() {        
+                                    // Style cursor Property  
+                        this.$el.style.cursor = "pointer"
+                        console.log("mouseover")
+                    },
+                    mouseleave() {                      
+                        this.$el.style.cursor = "default"
+                        // console.log("mouseleave")
+                    },
+                }
+            }
+        </script>
+    </section>
+    <!-- Todo: 
+        - change icon :
+        - bulma social icon , resource : https://aldi.github.io/bulma-social/  ?? use jquery ???
+     -->
 
 </div>
