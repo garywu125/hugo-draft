@@ -1,0 +1,62 @@
+<html>
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+</head>
+
+<body>
+     {{ partial "header" (dict "Kind" .Kind "Template" "List") }}
+     <p>layouts\dir1 list.html</p>
+     <!--  template custom variable can be use in layout template,not in content directory  -->
+     {{ $address := "123 Main St." }}
+     <p>{{ $address }}</p>
+     <!-- template function using Go Template’s math functions. can be called in layout template,not in content directory  -->
+     <p>11+22= {{ add 11 12}}</p>
+     {{ $array := slice "a" "b" "c" "d"}}
+     {{ range $elem_val := $array }}
+        <span>{{ $elem_val }}</span>
+     {{ end }}
+     {{ range $array }}
+        <p>{{ . }}</p>
+     <!-- The . represents an element in $array -->
+     {{ end }}
+     {{ range $elem_index, $elem_val := $array }}
+         <p>{{ $elem_index }} -- {{ $elem_val }}</p> 
+     {{ end }}
+
+     {{ $map:=(dict "fill" "#01589B" "width" 10 "height" 20 ) }}
+     {{ range $elem_key, $elem_val := $map }}
+           <p>{{ $elem_key }} -- {{ $elem_val }}</p> 
+     {{ end }}
+     <p>get array[2] value:{{ index $array 2 }} </p>
+     <p>get map["height"] value:{{ index $map "height" }} </p>
+     <p>{{ delimit (slice "foo" "bar" "buzz") ", " }}</p>
+
+     
+
+     {{.Content}}
+     {{ range .Pages }}
+     <div style="border: 1px solid black; margin:10px; padding:10px; ">
+          <div style="font-size:20px;">
+               <a href="{{.URL}}">{{.Title}}</a>
+          </div>
+          <div style="color:grey; font-size:16px;">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</div>
+          <div style="color:grey; font-size:16px;">{{ if .Params.tags }}<strong>Tags:</strong> {{range .Params.tags}}<a
+                    href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}</div>
+          <div style="color:grey; font-size:16px;">{{ if .Params.categories }}<strong>Categories:</strong>
+               {{range .Params.categories}}<a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+               {{end}}{{end}}</div>
+          <div style="color:grey; font-size:16px;">{{ if .Params.moods }}<strong>Moods:</strong>
+               {{range .Params.moods}}<a href="{{ "/moods/" | relLangURL }}{{ . | urlize }}">{{ . }}</a> {{end}}{{end}}
+          </div>
+
+          <p style="font-size:18px;">{{.Summary}}</p>
+     </div>
+     {{ end }}
+     {{ partial "footer" . }}
+</body>
+
+</html>

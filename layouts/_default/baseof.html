@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- responsive viewport meta tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ $.Site.BaseURL }}/css/bulma.min.css">
+  <link rel="stylesheet" href="{{ $.Site.BaseURL }}/css/styles.css">
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"> -->
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.1.2/dist/alpine.js" defer></script>
+
+  <!-- title of site from config.toml  -->
+  <title>{{ .Title }}</title>
+  <!-- invoke jascript function from static/js directory -->
+  <!-- <script src="{{ $.Site.BaseURL }}/js/swalert.js" defer></script> -->
+  <!-- css debug mode -->
+  <!-- <link rel="stylesheet" href="{{ $.Site.BaseURL }}/css//debug.css"> -->
+  <script async="" type="text/javascript" src="{{ $.Site.BaseURL }}/js/bulma.js"></script>
+</head>
+
+<body>  
+    <!-- Code that all your templates share, like a header -->
+    <p> top of baseof  </p>
+    {{ block "main" . }}
+      <!-- The part of the page that begins to differ between templates -->
+    {{ end }}
+    <!-- fixed footer always dispay under the current page bottom -->
+    {{ partial "footer.html" . }}    
+    bottom of baseof
+  </body>
+</html>

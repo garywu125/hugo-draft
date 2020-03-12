@@ -1,0 +1,60 @@
+<div class="container">
+    <h1 class="is-size-1"> the following is dull-shortcode.html in shorcodes folder</h1>
+    <h1 class="is-size-3 has-text-success"> call go & hugo template function in <em>hugo shortcodes</em></h1>
+    {{ $address := "123 Main St." }}
+    <p>{{ $address }}</p>
+    <!-- template function using Go Template’s math functions. can be called in layout template,not in content directory  -->
+    <p>11+12= {{ add 11 12}}</p>
+    {{ $array := slice "a" "b" "c" "d"}}
+    {{ range $elem_val := $array }}
+    <span>{{ $elem_val }}</span>
+    {{ end }}
+    {{ range $array }}
+    <p>{{ . }}</p>
+    <!-- The . represents an element in $array -->
+    {{ end }}
+    {{ range $elem_index, $elem_val := $array }}
+    <p>{{ $elem_index }} -- {{ $elem_val }}</p>
+    {{ end }}
+
+    {{ $map:=(dict "fill" "#01589B" "width" 10 "height" 20 ) }}
+    {{ range $elem_key, $elem_val := $map }}
+    <p>{{ $elem_key }} -- {{ $elem_val }}</p>
+    {{ end }}
+    <p>get array[2] value:{{ index $array 2 }} </p>
+    <p>get map["height"] value:{{ index $map "height" }} </p>
+    <p>{{ delimit (slice "foo" "bar" "buzz") ", " }}</p>
+
+    <hr>
+    <h1 class="is-size-3 has-text-success"> access alpine.js in <em>hugo shorcodes</em> </h1>
+    <section class="section">
+        <div class="container">
+            <table>
+                <tr>
+                    <td>Simple x-if</td>
+                    <td>
+                        <div x-data="{ show: false }">
+                            <template x-if="show">
+                                <span>!!! hey !!!!</span>
+                            </template>
+
+                            <!-- <button @click="show = ! show">Show</button> -->
+                            <button x-on:click="show = ! show">Show</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nested Binding</td>
+                    <td>
+                        <div x-data="{ foo: { bar: 'baz' } }">
+                            <div x-text="foo.bar"></div>
+                            <div x-text="JSON.stringify(foo)"></div>
+                            <input type="text" x-model="foo.bar">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </section>
+</div>

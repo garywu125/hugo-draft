@@ -1,0 +1,24 @@
+<!-- site parameter file is located in config/_defult folder params.toml -->
+{{ if .Params.affiliatelink }}
+<h3><a href={{ printf "%s" .Params.affiliatelink }}>Buy this book</a></h3>
+{{ end }}
+{{ if .Params.recommendedby }}
+<p>It was recommended by {{ .Params.recommendedby }}.</p>
+{{ end }}
+{{ if .Params.author }}
+<p>author display name : {{ .Param "author.display_name" }}</p>
+{{ end }}
+
+<!-- site parameter (toml format) : datasource: config.toml-yaml-json, access via {{.Site.Params.CopyrightHTML | safeHTML}}
+,.Site.Params is a container holding the values from the [params] section of your site configuration. -->
+<!-- allow nested parameter define in toml configuration -->
+
+{{ if .Site.Params.copyrighthtml }}
+     <footer>
+          <div class="text-center">{{.Site.Params.CopyrightHTML | safeHTML}}</div>
+          <!-- site parameter : access from config.toml-yaml-json -->
+          <p>site title : {{.Site.Title}}</p>           
+          <div class="text-center">alpha object:{{.Site.Params.Alpha }}</div>                     
+          <div class="text-center">ip:{{index .Site.Params.Alpha "ip"}}</div>    
+     </footer>
+{{ end }}

@@ -1,0 +1,45 @@
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+</head>
+<body>
+     {{ partial "header" (dict "Kind" .Kind "Template" "Single") }}
+     <p>layouts\dir1 single.html</p>
+     <!-- page parameter (format yaml): datasource:frontmatter from content , access from { .Params.recommendedby }}-->
+     <!-- allow nested parameter define in page fontmatter -->
+     {{ if .Params.affiliatelink }}
+     <h3><a href={{ printf "%s" .Params.affiliatelink }}>Buy this book</a></h3>
+     {{ end }}
+     {{ if .Params.recommendedby }}
+     <p>It was recommended by {{ .Params.recommendedby }}.</p>
+     {{ end }}
+     {{ if .Params.author }}
+     <p>author display name : {{ .Param "author.display_name" }}</p>
+     {{ end }}
+
+     <!-- site parameter (toml format) : datasource: config.toml-yaml-json, access via {{.Site.Params.CopyrightHTML | safeHTML}}
+     ,.Site.Params is a container holding the values from the [params] section of your site configuration. -->
+     <!-- allow nested parameter define in toml configuration -->
+
+     {{ if .Site.Params.copyrighthtml }}
+          <footer>
+               <div class="text-center">{{.Site.Params.CopyrightHTML | safeHTML}}</div>
+               <!-- site parameter : access from config.toml-yaml-json -->
+               <p>site title : {{.Site.Title}}</p>           
+               <div class="text-center">alpha object:{{.Site.Params.Alpha }}</div> 
+               <div class="text-center">ip:{{index .Site.Params.Alpha "ip"}}</div>    
+          </footer>
+     {{ end }}
+     <div style="margin:25px;">
+          <h1>{{.Title}}</h1>
+          <div style="color:grey; font-size:16px;">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</div>
+          <div style="color:grey; font-size:16px;">{{if .Params.author}}Author: {{.Params.Author}}{{end}}</div>
+          <div style="font-size:18px;">{{.Content}}</div>
+     </div>
+     
+     {{ partial "footer" . }}
+</body>
+</html>

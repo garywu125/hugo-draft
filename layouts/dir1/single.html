@@ -1,0 +1,134 @@
+{{ define "main" }}
+{{ partial "header" (dict "Kind" .Kind "Template" "Single") }}
+<div style="margin:25px;">
+     <!--  page title from  front matter of page content -->
+     <h1>{{.Title}}</h1>
+     <div style="color:grey; font-size:16px;">{{ dateFormat "Monday, Jan 2, 2006" .Date }}</div>
+     <div style="color:grey; font-size:16px;">{{if .Params.Author}}Author: {{.Params.Author}}{{end}}</div>
+     <div style="font-size:18px;">{{.Content}}</div>
+</div>
+<br>
+<hr>
+<h1 class="is-size-3 "> Access 配置目錄參數檔 + using alpine.js + bulma.css & Failure to Access shortcodes in <em
+          class="has-text-success">layout folder</em>
+</h1>
+<h1 class="is-size-3 has-text-success">=>Access 配置目錄參數檔 </h1>
+<!-- 存取參數檔的key,key的名稱必須大寫 -->
+<h1 class="is-size-5 ">Access 參數檔(params.toml)內的sitemap.filename:<span
+          class="has-text-success">{{.Site.Params.Sitemap.Filename }}</span></h1>
+
+<h1 class="is-size-3 has-text-primary">=> call go & hugo template function</h1>
+{{ $address := "123 Main St." }}
+<p>{{ $address }}</p>
+<!-- template function using Go Template’s math functions. can be called in layout template,not in content directory  -->
+<p>11+22= {{ add 11 22}}</p>
+{{ $array := slice "a" "b" "c" "d"}}
+{{ range $elem_val := $array }}
+<span>{{ $elem_val }}</span>
+{{ end }}
+
+<h1 class="is-size-3 has-text-success">=>using buma.css </h1>
+<div class="container ">
+     <section class="section">
+          <div class="container">
+
+               <nav class="nav">
+                    <!-- 導覽列容器 -->
+                    <div class="nav-left">
+                         <!-- 對齊方式：置左 -->
+                         <a href="" clas="nav-item">
+                              <!-- 元素 -->
+                              <h1 class="title is-4">Askie Lin</h1>
+                              <!-- 標題 -->
+                         </a>
+                    </div>
+                    <div class="nav-right nav-menu">
+                         <!-- 對齊方式：置右，是一個選單 -->
+                         <a href="" clas="nav-item">A</a><!-- 元素 -->
+                         <a href="" clas="nav-item">B</a><!-- 元素 -->
+                         <a href="" clas="nav-item">C</a><!-- 元素 -->
+                    </div>
+               </nav>
+               <div class="columns">
+                    <div class="column is-2">
+                         <p class="notification">2 Column</p>
+                    </div>
+                    <div class="column is-8">
+                         <p class="notification">8 Column</p>
+                    </div>
+                    <div class="column is-2">
+                         <p class="notification">2 Column</p>
+                    </div>
+               </div>
+               <div class="columns">
+                    <div class="column is-three-quarters">
+                         <p class="notification">四分之三</p>
+                         <div style="margin:25px;">
+                              <h1>{{.Title}}</h1>
+                              <div style="color:grey; font-size:16px;">{{ dateFormat "Monday, Jan 2, 2006" .Date }}
+                              </div>
+                              <div style="color:grey; font-size:16px;">{{if .Params.author}}Author:
+                                   {{.Params.Author}}{{end}}</div>
+                              <!-- <div style="font-size:18px;">{{.Content}}</div> -->
+                         </div>
+                    </div>
+                    <div class="column">
+                         <p class="notification">Auto</p>
+                    </div>
+                    <div class="column">
+                         <p class="notification">Auto</p>
+                    </div>
+               </div>
+
+          </div>
+
+
+     </section>
+
+
+     </section>
+
+
+</div>
+<section class="section">
+     <h1 class="is-size-3 has-text-success">=>using alpine.js </h1>
+     <section class="section">
+          <div class="container">
+               <table>
+                    <tr>
+                         <td>Simple x-if</td>
+                         <td>
+                              <div x-data="{ show: false }">
+                                   <template x-if="show">
+                                        <span>!!! hey !!!!</span>
+                                   </template>
+
+                                   <!-- <button @click="show = ! show">Show</button> -->
+                                   <button x-on:click="show = ! show">Show</button>
+                              </div>
+                         </td>
+                    </tr>
+                    <tr>
+                         <td>Nested Binding</td>
+                         <td>
+                              <div x-data="{ foo: { bar: 'baz' } }">
+                                   <div x-text="foo.bar"></div>
+                                   <div x-text="JSON.stringify(foo)"></div>
+                                   <input type="text" x-model="foo.bar">
+                              </div>
+                         </td>
+                    </tr>
+               </table>
+
+          </div>
+     </section>
+     <h1 class="is-size-3 has-text-danger">=>Failure to Access shortcodes </h1>
+
+
+
+
+
+     {{ partial "footer" . }}
+
+
+     {{ end }}

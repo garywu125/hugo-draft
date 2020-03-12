@@ -1,0 +1,347 @@
+---
+title: "A"
+date: 2020-02-16T15:18:01+08:00
+draft: true
+author: "gary wu"
+language: "Chinese"
+---
+
+
+
+
+<p>this is content->a.html</p>
+<h1 class="is-size-3 "> using alpine.js + call shortcode & <em>fail to call go & hugo template function</em> in <em
+        class="has-text-success">content folder</em></h1>
+
+<div x-data>
+    <button @click="$el.innerHTML = 'foo'">Replace me with "foo"</button>
+</div>
+
+<h1 class="is-size-3 has-text-danger">=>Failure to call go & hugo template function </h1>
+
+{{ $address := "123 Main St." }}
+<p>{{ $address }}</p>
+<p>11+22= {{ add 11 22}}</p>
+{{ $array := slice "a" "b" "c" "d"}}
+{{ range $elem_val := $array }}
+<span>{{ $elem_val }}</span>
+{{ end }}
+
+<h1 class="is-size-3 has-text-primary">=> using alpine.js</h1>
+<div class="container">
+
+    <section class="section">
+        <div class="container">
+
+            <div x-data="{vm:{ text: 'foo', checkbox: ['foo'], radio:
+                    'foo', select: 'foo', multiselect: ['foo'] }}">
+                Text:
+                <span x-text="JSON.stringify(vm.text)"></span>
+                <input type="text" x-model="vm.text">
+                Checkbox:
+                <span x-text="JSON.stringify(vm.checkbox)"></span>
+                <input type="checkbox" x-model="vm.checkbox" value="foo">
+                <input type="checkbox" x-model="vm.checkbox" value="bar">
+                Radio:
+                <span x-text="JSON.stringify(vm.radio)"></span>
+                <input type="radio" x-model="vm.radio" value="foo">
+                <input type="radio" x-model="vm.radio" value="bar">
+                Select:
+                <span x-text="JSON.stringify(vm.select)"></span>
+                <select x-model="vm.select">
+                    <option>foo</option>
+                    <option>bar</option>
+                </select>
+                Multiple Select:
+                <span x-text="JSON.stringify(vm.multiselect)"></span>
+                <select x-model="vm.multiselect" multiple>
+                    <option>foo</option>
+                    <option>bar</option>
+                </select>
+                <P x-text="JSON.stringify($data.vm.text)"></P>
+                <P x-text="JSON.stringify($data.vm.checkbox)"></P>
+                <P x-text="JSON.stringify($data.vm)"></P>
+            </div>
+            <p> outside </p>
+            <!-- show all the inputed data via $data.vm  -->
+            <P x-text="JSON.stringify($data.vm)"></P>
+            <a x-on:click="alert(JSON.stringify($data.vm))">hit me</a>
+        </div>
+    </section>
+
+
+    <!-- don't forget x-data -->
+    <p class="is-size-1 has-text-info">bulma navbar</p>
+    <nav class="navbar" role="navigation" aria-label="main navigation" x-data="{ show: false }">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <!-- navbar-burger -->
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu"
+                :class="{'is-active': show}" @click="show=!show">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <!-- navbar-menu -->
+        <div id="navMenu" class="navbar-menu" :class="{'is-active': show}" @click="show=!show">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Home
+                </a>
+
+                <a class="navbar-item">
+                    Documentation
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown" x-data="{hovered :''}">
+                        <a class="navbar-item" @mouseenter="hovered='A'" :class="{ 'is-active': hovered ==='A'}">
+                            About
+                        </a>
+                        <a class="navbar-item" @mouseenter="hovered='B'" :class="{ 'is-active': hovered ==='B'}">
+                            Jobs
+                        </a>
+                        <a class="navbar-item" @mouseenter="hovered='C'" :class="{ 'is-active': hovered ==='C'}">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" @mouseenter="hovered='D'" :class="{ 'is-active': hovered ==='D'}">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <p class="is-size-1 has-text-info">bulma tab</p>
+        <div x-data="{tab:'tab1'}">
+            <div class="tabs is-boxed">
+                <ul>
+                    <li :class="{ 'is-active' : tab === 'tab1'}">
+                        <a href="#" @click.prevent="tab = 'tab1'">
+                            <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+                            <span>Pictures</span>
+                        </a>
+                    </li>
+                    <li :class="{ 'is-active' : tab === 'tab2'}">
+                        <a href="#" @click.prevent="tab = 'tab2'">
+                            <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                            <span>Music</span>
+                        </a>
+                    </li>
+                    <li :class="{ 'is-active' : tab === 'tab3'}">
+                        <a href=" #" @click.prevent="tab = 'tab3'">
+                            <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                            <span>Videos</span>
+                        </a>
+                    </li>
+                    <li :class="{ 'is-active' : tab === 'tab4'}">
+                        <a href="#" @click.prevent="tab = 'tab4'">
+                            <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div x-show="tab === 'tab1'" class="has-text-primary">
+                Tab1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+                consectetur
+                eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+                tempore
+                voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+            </div>
+            <div x-show="tab === 'tab2'" class="has-text-link">
+                Tab2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+                consectetur
+                eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+                tempore
+                voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+            </div>
+            <div x-show="tab === 'tab3'" class="has-text-dark">
+                Tab3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+                consectetur
+                eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+                tempore
+                voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+            </div>
+            <div x-show="tab === 'tab4'" class="has-text-danger">
+                Tab4 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+                consectetur
+                eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+                tempore
+                voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <p class="is-size-1 has-text-info">bulma menu</p>
+        <aside class="menu is-hidden-mobile" x-data="{selected: 'item21' }">
+            <p class="menu-label">
+                General
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item11'"
+                        :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
+                <li><a href="#" @click.prevent="selected = 'item12'"
+                        :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
+            </ul>
+            <p class="menu-label">
+                Administration
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item21'"
+                        :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
+                <li>
+                    <a>Manage Your Team</a>
+                    <ul>
+                        <li><a href="#" @click.prevent="selected = 'item211'"
+                                :class="{ 'is-active' : selected === 'item211'}">Members</a></li>
+                        <li><a href="#" @click.prevent="selected = 'item212'"
+                                :class="{ 'is-active' : selected === 'item212'}">Plugins</a></li>
+                        <li><a href="#" @click.prevent="selected = 'item213'"
+                                :class="{ 'is-active' : selected === 'item213'}">Add a member</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item22'"
+                        :class="{ 'is-active' : selected === 'item22'}">Invitations</a></li>
+                <li><a href="#" @click.prevent="selected = 'item23'"
+                        :class="{ 'is-active' : selected === 'item23'}">Cloud Storage Environment Settings</a>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item24'"
+                        :class="{ 'is-active' : selected === 'item24'}">Authentication</a></li>
+            </ul>
+            <p class="menu-label">
+                Transactions
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item31'"
+                        :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
+                <li><a href="#" @click.prevent="selected = 'item32'"
+                        :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
+                <li><a href="#" @click.prevent="selected = 'item33'"
+                        :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
+            </ul>
+        </aside>
+    </section>
+    <section class="section">
+        <p class="is-size-1 has-text-info">bulma dropdown</p>
+        <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu"
+               @click="show = true"
+               @keydown.escape="show = false"
+               >
+                <span>Dropdown button</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <!-- ? hover on dropdown content , highlight dropdown item -->
+            <div class="dropdown-menu" id="dropdown-menu" role="menu"
+             @click.away="show = false"            
+             >
+              <div class="dropdown-content" x-data="{hovered :''}">
+                <a href="#" class="dropdown-item "  @mouseenter="hovered='A'" :class="{ 'is-active': hovered ==='A'}">
+                  Dropdown item
+                </a>
+                <a class="dropdown-item" @mouseenter="hovered='B'" :class="{ 'is-active': hovered ==='B' }">
+                  Other dropdown item
+                </a>
+                
+                <a href="#" class="dropdown-item " @mouseenter="hovered='C'" :class="{ 'is-active': hovered ==='C' }">
+                  Active dropdown item
+                </a>
+                <a href="#" class="dropdown-item" @mouseenter="hovered='D'" :class="{ 'is-active': hovered ==='D' }">
+                  Other dropdown item
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item" @mouseenter="hovered='E'" :class="{ 'is-active': hovered ==='E' }">
+                  With a divider
+                </a>
+              </div>
+            </div>
+          </div>
+    </section>   
+    <section class="section">
+        <div class="container">
+
+
+            <table>
+                <tr>
+                    <td>Simple x-if</td>
+                    <td>
+                        <div x-data="{ show: false }">
+                            <template x-if="show">
+                                <span>!!! hey !!!!</span>
+                            </template>
+
+                            <!-- <button @click="show = ! show">Show</button> -->
+                            <button x-on:click="show = ! show">Show</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nested Binding</td>
+                    <td>
+                        <div x-data="{ foo: { bar: 'baz' } }">
+                            <div x-text="foo.bar"></div>
+                            <div x-text="JSON.stringify(foo)"></div>
+                            <input type="text" x-model="foo.bar">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </section>
+</div>
+
+
+<h1 class="is-size-2 has-text-primary"> => template x-for="(item, index) in items" (alpine v2.02)</h1>
+<div x-data="{ items: ['foo'] }">
+    <template x-for="(item, index) in items">
+        <div>
+            <h1 x-text="items.indexOf(item)"></h1>
+            <h2 x-text="item"></h2>
+            <h2 x-text="index"></h2>
+        </div>
+    </template>
+</div>
+
+<h1 class="is-size-2 has-text-primary"> => x-if and x-for in conjunction</h1>
+
+<div x-data="{ items: ['foo', 'bar'], show: false }">
+    <button @click="show = ! show" class="is-size-4 has-text-danger"> demo x-if and x-for in conjunction</button>
+
+    <template x-if="show" x-for="item in items">
+        <span x-text="item"></span>
+    </template>
+</div>
+
+
+<h1 class="is-size-2 has-text-primary"> => call shortcode in content folder</h1>
+{{< dull-shortcode >}}
