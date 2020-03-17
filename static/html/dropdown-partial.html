@@ -1,0 +1,39 @@
+
+    <div class="dropdown-content" x-data="{hovered :''}">
+        <a href="#" 
+            class="dropdown-item"
+            @mouseenter="hovered='A'"
+            :class="{ 'is-active': hovered ==='A'}"
+        >
+            Dropdown item
+        </a>
+        <a 
+            class="dropdown-item"
+            @mouseenter="hovered='B'"
+            :class="{ 'is-active': hovered ==='B'}"
+            >
+            Other dropdown item
+        </a>
+        <a href="#" 
+            class="dropdown-item "
+            @mouseenter="hovered='C'"
+            :class="{ 'is-active': hovered ==='C'}"
+        >
+            Active dropdown item
+        </a>
+        <a href="#" 
+            class="dropdown-item"
+            @mouseenter="hovered='D'"
+            :class="{ 'is-active': hovered ==='D'}"
+            >
+            Other dropdown item
+        </a>
+        <hr class="dropdown-divider">
+        <a href="#" 
+            class="dropdown-item"
+            @mouseenter="hovered='E'"
+            :class="{ 'is-active': hovered ==='E'}"
+            >
+            With a divider
+        </a>
+    </div>

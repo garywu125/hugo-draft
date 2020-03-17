@@ -1,0 +1,148 @@
+---
+title: "dashboard"
+date: 2020-02-16T15:18:21+08:00
+draft: true
+recommendedby: "My father"
+author:
+given_name: John
+family_name: Feminella
+display_name: John Feminella
+---
+<!-- How to create sticky sidebar navigation : https://davidnge.com/blog/how-to-create-sticky-sidebar-navigation/ -->
+
+
+<div style=" margin-top: 20px">
+    <section class="section" x-data="{
+    selected: 'item11' ,
+    itemSelected: '' ,
+    item22Open:true ,
+    item23Open:true 
+   }">
+        <div class="columns">
+            <aside class="menu column is-2 ">
+                <!-- <aside class="menu column is-2 " >     -->
+                <p class="menu-label">
+                    General
+                </p>
+                <ul class="menu-list">
+                    <li><a href="#" @click.prevent="selected = 'item11';console.log(selected)"
+                            :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
+                    <li><a href="#" @click.prevent="selected = 'item12';console.log(selected)"
+                            :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
+                </ul>
+                <p class="menu-label">
+                    Administration
+                </p>
+                <ul class="menu-list">
+                    <li><a href="#" @click.prevent="selected = 'item21' "
+                            :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
+                    <li>
+                        <a href="#"
+                            @click.prevent="selected = 'item22';itemSelected = '' ; item22Open=!item22Open ">Manage
+                            Your Team
+                            <template x-if="item22Open">
+                                <span class="icon is-large">
+                                    <i class="fas  fa-caret-down"></i>
+                                </span>
+                            </template>
+                            <template x-if="!item22Open">
+                                <span class="icon is-large">
+                                    <i class="fas fa-caret-right"></i>
+                                </span>
+                            </template>
+                        </a>
+                        <template x-if="item22Open">
+                            <ul>
+                                <li><a href="#"
+                                        @click.prevent="itemSelected = 'item221'; item22Open?selected='item221':selected=''  "
+                                        :class="{ 'is-active' : itemSelected === 'item221' && ( selected === 'item221' ) }">Members</a>
+                                </li>
+                                <li><a href="#"
+                                        @click.prevent="itemSelected = 'item222' ; item22Open?selected='item222':selected=''"
+                                        :class="{ 'is-active' : itemSelected === 'item222' && (selected === 'item222' ) }">Plugins</a>
+                                </li>
+                                <li><a href="#"
+                                        @click.prevent="itemSelected = 'item223' ; item22Open?selected='item223':selected=''"
+                                        :class="{ 'is-active' : itemSelected === 'item223' && ( selected === 'item223' )}">Add
+                                        a member</a></li>
+                            </ul>
+                        </template>
+                    </li>
+                    <li><a href="#" @click.prevent="selected = 'item23';itemSelected = '' ; item23Open=!item23Open ">
+                            workforce deploy
+                            <template x-if="item23Open">
+                                <span class="icon is-large">
+                                    <i class="fas  fa-caret-down"></i>
+                                </span>
+                            </template>
+                            <template x-if="!item23Open">
+                                <span class="icon is-large">
+                                    <i class="fas fa-caret-right"></i>
+                                </span>
+                            </template>
+                        </a>
+                        <template x-if="item23Open">
+                            <ul>
+                                <li><a href="#"
+                                        @click.prevent="itemSelected = 'item231'; item23Open?selected='item231':selected=''  "
+                                        :class="{ 'is-active' : itemSelected === 'item231' && ( selected === 'item231' ) }">Members</a>
+                                </li>
+                                <!-- replace @click.prevent with @click -->
+                                <li><a href="https://www.google.com/" target="_blank"
+                                        @click="itemSelected = 'item232' ; item23Open?selected='item232':selected=''"
+                                        :class="{ 'is-active' : itemSelected === 'item232' && (selected === 'item232' ) }">Google</a>
+                                </li>
+                                <li><a href="#"
+                                        @click.prevent="itemSelected = 'item233' ; item23Open?selected='item233':selected=''"
+                                        :class="{ 'is-active' : itemSelected === 'item233' && ( selected === 'item233' )}">Add
+                                        a member</a></li>
+                            </ul>
+                        </template>
+                    </li>
+                    <li><a href="#" @click.prevent="selected = 'item24'"
+                            :class="{ 'is-active' : selected === 'item24'}">Cloud Storage Settings</a>
+                    </li>
+                    <li><a href="#" @click.prevent="selected = 'item25'"
+                            :class="{ 'is-active' : selected === 'item25'}">Authentication</a></li>
+                </ul>
+                <p class="menu-label">
+                    Transactions
+                </p>
+                <ul class="menu-list">
+                    <li><a href="#" @click.prevent="selected = 'item31'"
+                            :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
+                    <li><a href="#" @click.prevent="selected = 'item32'"
+                            :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
+                    <li><a href="#" @click.prevent="selected = 'item33'"
+                            :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
+                </ul>
+            </aside>
+
+
+
+            <!-- 警告 :不使用 <main> tag,改用 <div> tag , 否則會hugo has bug , will generate wrong code -->
+            <div class="column" >
+                <!-- 警告 :
+                    只能使用 <div x-show="expression" > ,
+                     不能用 <template x-if="expression"> -->
+                <nav class="breadcrumb is-small" aria-label=breadcrumbs>
+                    <ul>
+                        <li><a href=#>Home</a></li>
+                        <li class="is-active"><a href="#" x-text="selected" ></a></li>
+                    </ul>
+                </nav>
+
+                <div x-show="selected === 'item11'">
+                    <!-- *** hugo shortcode allow path/dashboard -->
+                    {{< dashboard/dashboard >}}
+                </div>
+                <div x-show="selected === 'item12'">
+                    <!-- customers -->
+                    {{< dashboard/customers >}}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

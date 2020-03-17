@@ -24,12 +24,14 @@
 
 <body>  
     <!-- Code that all your templates share, like a header -->
-    <p> top of baseof  </p>
+    <!-- <p> top of baseof  </p> -->
+    
     {{ block "main" . }}
       <!-- The part of the page that begins to differ between templates -->
     {{ end }}
     <!-- fixed footer always dispay under the current page bottom -->
     {{ partial "footer.html" . }}    
-    bottom of baseof
+    <!-- bottom of baseof -->
+    
   </body>
 </html>

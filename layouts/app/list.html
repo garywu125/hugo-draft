@@ -1,8 +1,6 @@
 {{ define "main" }}
-  
-
-     {{ partial "header" (dict "Kind" .Kind "Template" "List") }}
-     <p>this is dir1/list.html</p>
+     <!-- {{ partial "header" (dict "Kind" .Kind "Template" "List") }} -->
+     <p>this is app/list.html</p>
      {{.Content}}
      {{ range .Pages }}
           <div style="border: 1px solid black; margin:10px; padding:10px; ">

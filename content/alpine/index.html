@@ -3,7 +3,14 @@ title: "Alpine"
 date: 2020-02-16T21:49:52+08:00
 draft: true
 ---
+<!-- 
+  Using x-model, we bind this value to the input field.
+  By using x-text, we inject the value into the innerText of the paragraph element.    
+  nstantiate a new component using x-data 
+  class binding:  we pass in object where the key is the class-name  and the value is a boolean expression
+  x-if : because Alpine.js doesn’t use the Virtual DOM, x-if can only be used on a <template></template> (tag that wraps the element you wish to hide).
 
+ -->
 <p class="is-size-1 has-text-info">javascript Expression:New javascript Date Object and call method one it to get current year</p>
 <p x-data="{year: (new Date()).getFullYear(),}"> 
    current year : <span x-text="year"></span> 
