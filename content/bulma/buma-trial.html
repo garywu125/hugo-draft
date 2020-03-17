@@ -4,7 +4,12 @@ date: 2020-02-16T21:49:52+08:00
 draft: true
 ---
 <!-- todo 
-    verticle menu scrolling ???
+    component: (step/carousel)
+    popup : megamenu/tooltip using alpine
+    - sticky sidebar navigation
+        How to create sticky sidebar navigation
+        1. https://davidnge.com/blog/how-to-create-sticky-sidebar-navigation/
+        https://github.com/davidnge/sticky-navigation
  -->
 this is bulma.html
 <!-- hero > hero body -> align 4 containers
@@ -866,9 +871,15 @@ this is bulma.html
 <section class="section">
     <!-- x-data : allow-multiple ,is-active as a kye, is not allowed -->
     <!-- setting option : multiple (true/false): allow multiple -->
-    <div  x-data="{f1Open:false,f2Open:false,f3Open:false,current:'' ,multiple:false}">
+    <!-- Todo : accordion 傳入參數 with default value -->
+    <div  x-data="accordion()">
         <article class="message " style="margin: 0px;">
-            <div class="message-header has-background-grey-light" style="border: 1px solid"  @click="f1Open=!f1Open;current='f1'"  >
+            <div class="message-header " 
+                 style="border: 1px solid;height:40px;"  
+                 @click="f1Open=!f1Open;current='f1'"
+                 @mouseover="mouseover"
+                 @mouseleave="mouseleave"
+                   >
                 <!-- x-show ?? multiple contions -->
                 <div x-show="multiple?(f1Open || (current=='f1' && ! multiple)):current=='f1'">
                     <span class="icon is-large">
@@ -881,7 +892,8 @@ this is bulma.html
                         <i class="fas fa-caret-right"></i>                        
                     </span>
                     <span> Question 1 Collapse/Expand</span>
-                </div>                
+                </div>          
+                <!-- <button class="delete" aria-label="delete"></button>       -->
             </div>
             <div   class="message-body"  x-show="multiple?(f1Open || (f1Open && current=='f1') ):current=='f1'">
                 <div class="message-body-content">
@@ -894,7 +906,12 @@ this is bulma.html
             </div>
         </article>
         <article class="message" style="margin: 0px;">
-            <div class="message-header has-background-grey-light" style="border: 1px solid"  @click="f2Open=!f2Open;current='f2'" >
+            <div class="message-header "
+                 style="border: 1px solid;height:40px;"  
+                 @click="f2Open=!f2Open;current='f2'" 
+                 @mouseover="mouseover"
+                 @mouseleave="mouseleave"
+                 >
                 <div x-show=" multiple?(f2Open || (current=='f2' && ! multiple)):current=='f2'" >
                     <span class="icon is-large">
                         <i class="fas  fa-caret-down"></i>                       
@@ -906,7 +923,8 @@ this is bulma.html
                         <i class="fas fa-caret-right"></i>                        
                     </span>
                     <span> Question 2 Collapse/Expand</span>
-                </div>                
+                </div>       
+                <!-- <button class="delete" aria-label="delete"></button>          -->
             </div>
             <div  class="message-body " x-show="multiple? (f2Open || (f2Open && current=='f2') ):current=='f2'" >
                 <div class="message-body-content">
@@ -918,8 +936,13 @@ this is bulma.html
                 </div>
             </div>
         </article>
-        <article class="message" style="margin: 0px;">
-            <div class="message-header has-background-grey-light" style="border: 1px solid"  @click="f3Open=!f3Open;current='f3'" >
+        <article class="message  " style="margin: 0px;">
+            <div class="message-header "
+                 style="border: 1px solid;height:40px;"  
+                 @click="f3Open=!f3Open;current='f3'"
+                 @mouseover="mouseover"
+                 @mouseleave="mouseleave"
+                  >
                 <div x-show=" multiple?(f3Open || (current=='f3' && ! multiple)):current=='f3'" >
                     <span class="icon is-large">
                         <i class="fas  fa-caret-down"></i>                       
@@ -931,7 +954,8 @@ this is bulma.html
                         <i class="fas fa-caret-right"></i>                        
                     </span>
                     <span> Question 2 Collapse/Expand</span>
-                </div>                
+                </div>      
+                <!-- <button class="delete" aria-label="delete"></button>           -->
             </div>
             <div  class="message-body " x-show="multiple? (f3Open || (f3Open && current=='f3') ):current=='f3'" >
                 <div class="message-body-content">
@@ -942,6 +966,26 @@ this is bulma.html
                     sem eget, facilisis sodales sem.
                 </div>
             </div>
+            <script type="text/javascript">
+                function accordion() {
+                    return {
+                        f1Open:false,
+                        f2Open:false,
+                        f3Open:false,
+                        current:'' ,
+                        multiple:false,                        
+                        mouseover() {
+                            // Style cursor Property  
+                            this.$el.style.cursor = "pointer"
+                            console.log("mouseover")
+                        },
+                        mouseleave() {
+                            this.$el.style.cursor = "default"
+                            // console.log("mouseleave")
+                        },
+                    }
+                }
+            </script>
         </article>
     </div>
 </section>
