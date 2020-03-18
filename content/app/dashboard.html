@@ -12,14 +12,22 @@ display_name: John Feminella
 
 
 <div style=" margin-top: 20px">
-    <section class="section" x-data="{
-    selected: 'item11' ,
-    itemSelected: '' ,
-    item22Open:true ,
-    item23Open:true 
-   }">
+    <section class="section" x-data="mydashboard()">
+        <header class="title has-text-centered">
+            <!-- <span class="is-pulled-left is-hidden-tablet"> -->
+            <span class="is-pulled-left ">
+                <span class="icon has-text-info"
+                 @click="asideOpened=!asideOpened"
+                 
+                 >
+                    <i class="fas fa-bars"></i>
+                </span>
+            </span>
+            <span>Dashboard</span>
+        </header>
+
         <div class="columns">
-            <aside class="menu column is-2 ">
+            <aside class="column is-narrow menu" x-show="asideOpened">
                 <!-- <aside class="menu column is-2 " >     -->
                 <p class="menu-label">
                     General
@@ -121,14 +129,14 @@ display_name: John Feminella
 
 
             <!-- 警告 :不使用 <main> tag,改用 <div> tag , 否則會hugo has bug , will generate wrong code -->
-            <div class="column" >
+            <div class="column">
                 <!-- 警告 :
                     只能使用 <div x-show="expression" > ,
                      不能用 <template x-if="expression"> -->
                 <nav class="breadcrumb is-small" aria-label=breadcrumbs>
                     <ul>
-                        <li><a href=#>Home</a></li>
-                        <li class="is-active"><a href="#" x-text="selected" ></a></li>
+                        <li><a href=#>General</a></li>
+                        <li class="is-active"><a href="#" x-text="selected"></a></li>
                     </ul>
                 </nav>
 
@@ -142,7 +150,27 @@ display_name: John Feminella
                 </div>
             </div>
         </div>
-    </section>
+        <script type="text/javascript">
+            function mydashboard() {
+                return {
+    
+                    asideOpened: true,
+                    selected: 'item11',
+                    itemSelected: '',
+                    item22Open: true,
+                    item23Open: true ,
+                    mouseover() {
+                        // Style cursor Property                      
+                        // this.$el.style.cursor = "pointer"
+                        // console.log("mouseover")
+                    },
+                    mouseleave() {
+                        // this.$el.style.cursor = "default"
+                        // console.log("mouseleave")
+                    },
+    
+                }
+            }    
+        </script>
+    </section>   
 </div>
-
-

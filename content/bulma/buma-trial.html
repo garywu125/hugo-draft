@@ -3,9 +3,21 @@ title: "Bulma trial"
 date: 2020-02-16T21:49:52+08:00
 draft: true
 ---
+
 <!-- todo 
-    component: (step/carousel)
+    search input ???: Covid-19 Stats using bulma + alpine.js : https://richardkeep.dev/ https://github.com/richardkeep/covid-19
+    component: (stepper/carousel)
+            display a title on Bulma carousel?
+            - carousel images ,each image with tage information https://stackoverflow.com/questions/58380735/how-to-display-a-title-on-bulma-carousel (https://github.com/Wikiki/bulma-carousel/issues/78)
     popup : megamenu/tooltip using alpine
+    - responsive sidebar menu (drawer)
+      refernce :
+      Standard drawer
+            Standard navigation drawers allow users to simultaneously access drawer destinations and app content.
+            They are often co-planar with app content and affect the screen’s layout grid.
+            Standard drawers can be permanently visible or opened and closed by tapping a navigation menu icon.
+            They can be used on tablet and desktop only. On mobile, modal drawers are used instead.
+
     - sticky sidebar navigation
         How to create sticky sidebar navigation
         1. https://davidnge.com/blog/how-to-create-sticky-sidebar-navigation/
@@ -309,394 +321,148 @@ this is bulma.html
 <!-- navbar is-fixed-bottom : using is-hidden class to display while mobile -->
 <nav class="is-hidden-tablet navbar is-link is-fixed-bottom" role="navigation">
     <div class="navbar-brand">
-      <a class="navbar-item is-expanded  is-block has-text-centered">
-        <i class="fa fa-user"></i>
-        <p class="is-size-7">Account</p>
-      </a>
-      <a class="navbar-item is-expanded  is-block has-text-centered">
-        <i class="fa fa-list"></i>
-        <p class="is-size-7">Tasks</p>
-      </a>
-      <a class="navbar-item is-expanded is-block has-text-centered">
-        <i class="fa fa-flag"></i>
-        <p class="is-size-7">Alerts</p>
-      </a>
-      <a class="navbar-item is-expanded  is-block has-text-centered">
-        <i class="fa fa-cog"></i>
-        <p class="is-size-7">Settings</p>
-      </a>
+        <a class="navbar-item is-expanded  is-block has-text-centered">
+            <i class="fa fa-user"></i>
+            <p class="is-size-7">Account</p>
+        </a>
+        <a class="navbar-item is-expanded  is-block has-text-centered">
+            <i class="fa fa-list"></i>
+            <p class="is-size-7">Tasks</p>
+        </a>
+        <a class="navbar-item is-expanded is-block has-text-centered">
+            <i class="fa fa-flag"></i>
+            <p class="is-size-7">Alerts</p>
+        </a>
+        <a class="navbar-item is-expanded  is-block has-text-centered">
+            <i class="fa fa-cog"></i>
+            <p class="is-size-7">Settings</p>
+        </a>
     </div>
-  </nav>
+</nav>
 
 
-<p class="is-size-1 has-text-info has-text-centered">bulma tab</p>
+<p class=" is-size-1 has-text-danger has-text-centered"> Bulma Responsive Gallery multiline colums layout (auto layout)
+</p>
 <section class="section">
-
-    <div x-data="{tab:'tab1'}">
-        <div class="tabs is-boxed">
-            <ul>
-                <li :class="{ 'is-active' : tab === 'tab1'}">
-                    <a href="#" @click.prevent="tab = 'tab1'">
-                        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
-                        <span>Pictures</span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active' : tab === 'tab2'}">
-                    <a href="#" @click.prevent="tab = 'tab2'">
-                        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-                        <span>Music</span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active' : tab === 'tab3'}">
-                    <a href=" #" @click.prevent="tab = 'tab3'">
-                        <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
-                        <span>Videos</span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active' : tab === 'tab4'}">
-                    <a href="#" @click.prevent="tab = 'tab4'">
-                        <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                        <span>Documents</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div x-show="tab === 'tab1'" class="has-text-primary">
-            Tab1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-        <div x-show="tab === 'tab2'" class="has-text-link">
-            Tab2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-        <div x-show="tab === 'tab3'" class="has-text-dark">
-            Tab3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-        <div x-show="tab === 'tab4'" class="has-text-danger">
-            Tab4 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-    </div>
-</section>
-
-<p class="is-size-1 has-text-info has-text-centered">bulma vertical sidebar Collapsible menu </p>
-<section class="section" x-data="{
-    selected: 'item11' ,
-    itemSelected: '' ,
-    item22Open:true ,
-    item23Open:true 
-   }">
-    <div class="columns">
-        <aside class="menu column is-2 is-hidden-mobile">
-            <p class="menu-label">
-                General
-            </p>
-            <ul class="menu-list">
-                <li><a href="#" @click.prevent="selected = 'item11';console.log(selected)"
-                        :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
-                <li><a href="#" @click.prevent="selected = 'item12';console.log(selected)"
-                        :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
-            </ul>
-            <p class="menu-label">
-                Administration
-            </p>
-            <ul class="menu-list">
-                <li><a href="#" @click.prevent="selected = 'item21' "
-                        :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
-                <li>
-                    <a href="#" @click.prevent="selected = 'item22';itemSelected = '' ; item22Open=!item22Open ">Manage
-                        Your Team
-                        <template x-if="item22Open">
-                            <span class="icon is-large">
-                                <i class="fas  fa-caret-down"></i>
-                            </span>
-                        </template>
-                        <template x-if="!item22Open">
-                            <span class="icon is-large">
-                                <i class="fas fa-caret-right"></i>
-                            </span>
-                        </template>
-                    </a>
-                    <template x-if="item22Open">
-                        <ul>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item221'; item22Open?selected='item22':selected=''  "
-                                    :class="{ 'is-active' : itemSelected === 'item221' && ( selected === 'item22' ) }">Members</a>
-                            </li>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item222' ; item22Open?selected='item22':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item222' && (selected === 'item22' ) }">Plugins</a>
-                            </li>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item223' ; item22Open?selected='item22':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item223' && ( selected === 'item22' )}">Add
-                                    a member</a></li>
-                        </ul>
-                    </template>
-                </li>
-                <li><a href="#" @click.prevent="selected = 'item23';itemSelected = '' ; item23Open=!item23Open ">
-                        workforce deploy
-                        <template x-if="item23Open">
-                            <span class="icon is-large">
-                                <i class="fas  fa-caret-down"></i>
-                            </span>
-                        </template>
-                        <template x-if="!item23Open">
-                            <span class="icon is-large">
-                                <i class="fas fa-caret-right"></i>
-                            </span>
-                        </template>
-                    </a>
-                    <template x-if="item23Open">
-                        <ul>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item231'; item23Open?selected='item23':selected=''  "
-                                    :class="{ 'is-active' : itemSelected === 'item231' && ( selected === 'item23' ) }">Members</a>
-                            </li>
-                            <!-- replace @click.prevent with @click -->
-                            <li><a href="https://www.google.com/" target="_blank"
-                                    @click="itemSelected = 'item232' ; item23Open?selected='item23':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item232' && (selected === 'item23' ) }">Google</a>
-                            </li>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item233' ; item23Open?selected='item23':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item233' && ( selected === 'item23' )}">Add
-                                    a member</a></li>
-                        </ul>
-                    </template>
-                </li>
-                <li><a href="#" @click.prevent="selected = 'item24'"
-                        :class="{ 'is-active' : selected === 'item24'}">Cloud Storage Settings</a>
-                </li>
-                <li><a href="#" @click.prevent="selected = 'item25'"
-                        :class="{ 'is-active' : selected === 'item25'}">Authentication</a></li>
-            </ul>
-            <p class="menu-label">
-                Transactions
-            </p>
-            <ul class="menu-list">
-                <li><a href="#" @click.prevent="selected = 'item31'"
-                        :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
-                <li><a href="#" @click.prevent="selected = 'item32'"
-                        :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
-                <li><a href="#" @click.prevent="selected = 'item33'"
-                        :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
-            </ul>
-        </aside>
-        <!-- 警告 :不使用 <main> tag,改用 <div> tag , 否則會hugo has bug , will generate wrong code -->
-        <div class="column">
-            <!-- 警告 :
-                    只能使用 <div x-show="expression" > ,
-                     不能用 <template x-if="expression"> -->
-
-            <div x-show="selected === 'item11'">
-                <!-- *** hugo shortcode allow path/dashboard -->
-                {{< dashboard/dashboard >}}
-            </div>
-            <div x-show="selected === 'item12'">
-                <!-- customers -->
-                {{< dashboard/customers >}}
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- @keydown.window.escape="show = false"  vs @keydown.escape="show = false"-->
-<p class="is-size-1 has-text-info has-text-centered">bulma dropdown</p>
-<section class="section">
-    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
-        <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
-                @keydown.window.escape="show = false">
-                <span>Dropdown button</span>
-                <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-            </button>
-        </div>
-        <!-- ? hover on dropdown content , highlight dropdown item -->
-        <div class="dropdown-menu" id="dropdown-menu" role="menu" @click.away="show = false">
-            <div class="dropdown-content" x-data="{hovered :''}">
-                <a href="https://www.google.com/" target="_blank" class="dropdown-item " @mouseenter="hovered='A'"
-                    :class="{ 'is-active': hovered ==='A'}">
-                    Google
-                </a>
-                <a href="/html/dropdown.html" target="_blank" class="dropdown-item" @mouseenter="hovered='B'"
-                    :class="{ 'is-active': hovered ==='B' }">
-                    Other dropdown item(#)
-                </a>
-
-                <a href="#" class="dropdown-item " @mouseenter="hovered='C'" :class="{ 'is-active': hovered ==='C' }">
-                    Active dropdown item
-                </a>
-                <a href="#" class="dropdown-item" @mouseenter="hovered='D'" :class="{ 'is-active': hovered ==='D' }">
-                    Other dropdown item
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item" @mouseenter="hovered='E'" :class="{ 'is-active': hovered ==='E' }">
-                    With a divider
-                </a>
-            </div>
-        </div>
-    </div>
-    <br>
-    <p class="has-text-primary">Pre-fetching a dropdown's HTML content on hover , HTML content is locate is static/html directory</p>
-    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
-        <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" 
-             @click="show = true"
-             @mouseenter.once="
-                fetch('/html/dropdown-partial.html')
-                .then(response => response.text())
-                .then(html => { $refs.output.innerHTML=html })
-                "
-              >
-                <span>Dropdown button</span>
-                <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-            </button>
-        </div>
-        <div class="dropdown-menu" 
-            id="dropdown-menu" 
-            role="menu"  
-            x-ref="output" 
-            @click.away="show = false">
-
-        </div>
-        
-    </div>
-</section>
-<p class=" is-size-1 has-text-info has-text-centered">bulma card</p>
-<section class="section" x-data>
-    <p class="subtitle">data fetching with loading indicator button(ex.charizard,pidgeotto ,kakuna ,charmeleon)</p>
-    <div x-data="pokeSearch()" x-init="fetchPokemon()">
-        <h3 class="is-size-5 has-text-primary">
-            Data Fetch with fetch api
-        </h3>
-
-        <div>
-            <input type="text" name="pokemonSearch" x-model="pokemonSearch">
-            <!-- submit loading indicator -->
-            <button type="submit" @click="fetchPokemon()" :class="{'button is-loading': isLoading}"
-                :disabled="isLoading" disabled="">
-                Search
-            </button>
-        </div>
-        <template x-if="pokemon">
+    <div class="columns is-multiline">
+        <div class="column is-one-quarter-desktop is-half-tablet">
             <div class="card">
                 <div class="card-image">
-                    <figure class="image is-96x96">
-                        <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
+                    <figure class="image is-3by2">
+                        <img src="https://unsplash.it/300/200/?random&pic=1" alt="">
                     </figure>
+                    <div class="card-content is-overlay is-clipped">
+                        <span class="tag is-info">
+                            Photo Title That is really long to show the clipping
+                        </span>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h3 class="has-text-black" x-text="pokemon.name"></h3>
-                    <nav class="level is-mobile">
-                        <div class="level-left">
-                            <template x-for="abilityObj in pokemon.abilities" :key="abilityObj.ability.url">
-                                <span x-text="abilityObj.ability.name" class="level-item has-text-centered"></span>
-                            </template>
-                        </div>
-                    </nav>
-                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        BUY
+                    </a>
+                </footer>
             </div>
-
-        </template>
-        <script type="text/javascript">
-
-            function pokeSearch() {
-                return {
-                    pokemonSearch: "charizard",
-                    // charizard,pidgeotto ,kakuna ,charmeleon
-                    pokemon: null,
-                    isLoading: false,
-                    fetchPokemon() {
-
-                        this.isLoading = true;
-                        fetch(`https://pokeapi.co/api/v2/pokemon/${this.pokemonSearch}`)
-                            .then(res => res.json())
-                            .then(data => {
-                                this.isLoading = false;
-                                this.pokemon = data;
-                            });
-                    }
-                };
-            }
-
-        </script>
+        </div>
+        <div class="column is-one-quarter-desktop is-half-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-3by2">
+                        <img src="https://unsplash.it/300/200/?random&pic=2" alt="">
+                    </figure>
+                    <div class="card-content is-overlay is-clipped">
+                        <span class="tag is-info">
+                            Photo Title
+                        </span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        BUY
+                    </a>
+                </footer>
+            </div>
+        </div>
+        <div class="column is-one-quarter-desktop is-half-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-3by2">
+                        <img src="https://unsplash.it/300/200/?random&pic=3" alt="">
+                    </figure>
+                    <div class="card-content is-overlay is-clipped">
+                        <span class="tag is-info">
+                            Photo Title
+                        </span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        BUY
+                    </a>
+                </footer>
+            </div>
+        </div>
+        <div class="column is-one-quarter-desktop is-half-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-3by2">
+                        <img src="https://unsplash.it/300/200/?random&pic=4" alt="">
+                    </figure>
+                    <div class="card-content is-overlay is-clipped">
+                        <span class="tag is-info">
+                            Photo Title
+                        </span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        BUY
+                    </a>
+                </footer>
+            </div>
+        </div>
+        <div class="column is-one-quarter-desktop is-half-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-3by2">
+                        <img src="https://unsplash.it/300/200/?random&pic=5" alt="">
+                    </figure>
+                    <div class="card-content is-overlay is-clipped">
+                        <span class="tag is-info">
+                            Photo Title
+                        </span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        BUY
+                    </a>
+                </footer>
+            </div>
+        </div>
+        <div class="column is-one-quarter-desktop is-half-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-3by2">
+                        <img src="https://unsplash.it/300/200/?random&pic=6" alt="">
+                    </figure>
+                    <div class="card-content is-overlay is-clipped">
+                        <span class="tag is-info">
+                            Photo Title
+                        </span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">
+                        BUY
+                    </a>
+                </footer>
+            </div>
+        </div>
     </div>
 </section>
-<p class=" is-size-1 has-text-danger has-text-centered">bulma popup modal</p>
-<section class="section" x-data>
-    <div class="container">
-        <section class="section" x-data="modalOp()" @keydown.escape="cancelModal()">
-            <!-- 新增 : @keydown.escape="cancelModal()  -->
-            <h1 class="title">Bulma Modal Confirmation</h1>
-            <p class="subtitle">Displays a modal when button pressed</p>
-            <!-- add modal popup default button -->
-            <button class="button" @click="showModal();$nextTick(() => $refs.modalCloseButton.focus())">Show
-                Modal</button>
-            <hr />
-            <p>Last Modal Confirmation: <span x-text="okPressed"></span></p>
 
-            <div class="modal" :class="{'is-active': showModalFlag}">
-                <div class="modal-background" @click="cancelModal()"></div> <!-- 新增 : @click="cancelModal()  -->
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Confirmation Modal</p>
-                        <button class="delete" aria-label="close" @click="cancelModal">></button>
-                    </header>
-                    <section class="modal-card-body">
-                        <p x-text="message"></p>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success" @click="okModal">Ok</button>
-                        <button class="button" x-ref="modalCloseButton" @click="cancelModal">Cancel</button>
-                    </footer>
-                </div>
-            </div>
-            <script type="text/javascript">
-
-                function modalOp() {
-                    return {
-                        showModalFlag: false,
-                        okPressed: false,
-                        message: "Press 'Ok' or 'Cancel'.",
-                        showModal() {
-                            this.okPressed = false;
-                            this.showModalFlag = true;
-                        },
-                        okModal() {
-                            this.okPressed = true;
-                            this.showModalFlag = false;
-                        },
-                        cancelModal() {
-                            this.okPressed = false;
-                            this.showModalFlag = false;
-                        }
-                    }
-                }
-            </script>
-    </div>
-</section>
-<!-- Todo: image grid using bulma : refernce : https://www.youtube.com/watch?v=Ng1BL8piOcg -->
-<p class=" is-size-1 has-text-danger has-text-centered">Image Grid : multiline colums layout </p>
+<p class=" is-size-1 has-text-danger has-text-centered">Image Grid : multiline colums layout (specific layout) </p>
 <section class="section" x-data="imageGrid()">
 
 
@@ -866,114 +632,546 @@ this is bulma.html
     </script>
 </section>
 
+
+<p class=" title has-text-danger has-text-centered"> button display depending on the width of the viewport </p>
+<p class=" subtitle has-text-info has-text-centered"> change layout with on/off buton to show/hide first column , only
+    display while in touch device </p>
+<!-- responsive sidebar menu -->
+<!--  is-hidden-(tablet | desktop):the same column varies in width at each breakpoint,基本上隱藏起來,只有當viewport=<tablet | desktop> 以下,才顯示  -->
+
+<section class="section" x-data="{ open: true }">
+    <a class="button is-hidden-desktop has-text-primary" @click="open=!open">show/hide first column</a>
+    <div class="columns is-mobile">
+        <div x-show="open"
+            class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+            <code>is-three-quarters-mobile</code><br>
+            <code>is-two-thirds-tablet</code><br>
+            <code>is-half-desktop</code><br>
+            <code>is-one-third-widescreen</code><br>
+            <code>is-one-quarter-fullhd</code>
+        </div>
+        <div class="column">2</div>
+        <div class="column">3</div>
+        <div class="column">4</div>
+        <div class="column">5</div>
+    </div>
+</section>
+
+<p class="is-size-1 has-text-info has-text-centered">bulma tab</p>
+<section class="section">
+
+    <div x-data="{tab:'tab1'}">
+        <div class="tabs is-boxed">
+            <ul>
+                <li :class="{ 'is-active' : tab === 'tab1'}">
+                    <a href="#" @click.prevent="tab = 'tab1'">
+                        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+                        <span>Pictures</span>
+                    </a>
+                </li>
+                <li :class="{ 'is-active' : tab === 'tab2'}">
+                    <a href="#" @click.prevent="tab = 'tab2'">
+                        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                        <span>Music</span>
+                    </a>
+                </li>
+                <li :class="{ 'is-active' : tab === 'tab3'}">
+                    <a href=" #" @click.prevent="tab = 'tab3'">
+                        <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                        <span>Videos</span>
+                    </a>
+                </li>
+                <li :class="{ 'is-active' : tab === 'tab4'}">
+                    <a href="#" @click.prevent="tab = 'tab4'">
+                        <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                        <span>Documents</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div x-show="tab === 'tab1'" class="has-text-primary">
+            Tab1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+        <div x-show="tab === 'tab2'" class="has-text-link">
+            Tab2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+        <div x-show="tab === 'tab3'" class="has-text-dark">
+            Tab3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+        <div x-show="tab === 'tab4'" class="has-text-danger">
+            Tab4 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+    </div>
+</section>
+
+<p class="is-size-1 has-text-info has-text-centered">bulma vertical sidebar Collapsible menu </p>
+<section class="section" x-data="mydashboard()">
+    <header class="title has-text-centered">
+        <!-- <span class="is-pulled-left is-hidden-tablet"> -->
+        <span class="is-pulled-left ">
+            <span class="icon has-text-info"
+             @click="asideOpened=!asideOpened"
+             
+             >
+                <i class="fas fa-bars"></i>
+            </span>
+        </span>
+        <span>Dashboard</span>
+    </header>
+
+    <div class="columns">
+        <aside class="column is-narrow menu" x-show="asideOpened">
+            <!-- <aside class="menu column is-2 " >     -->
+            <p class="menu-label">
+                General
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item11';console.log(selected)"
+                        :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
+                <li><a href="#" @click.prevent="selected = 'item12';console.log(selected)"
+                        :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
+            </ul>
+            <p class="menu-label">
+                Administration
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item21' "
+                        :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
+                <li>
+                    <a href="#"
+                        @click.prevent="selected = 'item22';itemSelected = '' ; item22Open=!item22Open ">Manage
+                        Your Team
+                        <template x-if="item22Open">
+                            <span class="icon is-large">
+                                <i class="fas  fa-caret-down"></i>
+                            </span>
+                        </template>
+                        <template x-if="!item22Open">
+                            <span class="icon is-large">
+                                <i class="fas fa-caret-right"></i>
+                            </span>
+                        </template>
+                    </a>
+                    <template x-if="item22Open">
+                        <ul>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item221'; item22Open?selected='item221':selected=''  "
+                                    :class="{ 'is-active' : itemSelected === 'item221' && ( selected === 'item221' ) }">Members</a>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item222' ; item22Open?selected='item222':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item222' && (selected === 'item222' ) }">Plugins</a>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item223' ; item22Open?selected='item223':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item223' && ( selected === 'item223' )}">Add
+                                    a member</a></li>
+                        </ul>
+                    </template>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item23';itemSelected = '' ; item23Open=!item23Open ">
+                        workforce deploy
+                        <template x-if="item23Open">
+                            <span class="icon is-large">
+                                <i class="fas  fa-caret-down"></i>
+                            </span>
+                        </template>
+                        <template x-if="!item23Open">
+                            <span class="icon is-large">
+                                <i class="fas fa-caret-right"></i>
+                            </span>
+                        </template>
+                    </a>
+                    <template x-if="item23Open">
+                        <ul>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item231'; item23Open?selected='item231':selected=''  "
+                                    :class="{ 'is-active' : itemSelected === 'item231' && ( selected === 'item231' ) }">Members</a>
+                            </li>
+                            <!-- replace @click.prevent with @click -->
+                            <li><a href="https://www.google.com/" target="_blank"
+                                    @click="itemSelected = 'item232' ; item23Open?selected='item232':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item232' && (selected === 'item232' ) }">Google</a>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item233' ; item23Open?selected='item233':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item233' && ( selected === 'item233' )}">Add
+                                    a member</a></li>
+                        </ul>
+                    </template>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item24'"
+                        :class="{ 'is-active' : selected === 'item24'}">Cloud Storage Settings</a>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item25'"
+                        :class="{ 'is-active' : selected === 'item25'}">Authentication</a></li>
+            </ul>
+            <p class="menu-label">
+                Transactions
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item31'"
+                        :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
+                <li><a href="#" @click.prevent="selected = 'item32'"
+                        :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
+                <li><a href="#" @click.prevent="selected = 'item33'"
+                        :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
+            </ul>
+        </aside>
+
+
+
+        <!-- 警告 :不使用 <main> tag,改用 <div> tag , 否則會hugo has bug , will generate wrong code -->
+        <div class="column">
+            <!-- 警告 :
+                只能使用 <div x-show="expression" > ,
+                 不能用 <template x-if="expression"> -->
+            <nav class="breadcrumb is-small" aria-label=breadcrumbs>
+                <ul>
+                    <li><a href=#>General</a></li>
+                    <li class="is-active"><a href="#" x-text="selected"></a></li>
+                </ul>
+            </nav>
+
+            <div x-show="selected === 'item11'">
+                <!-- *** hugo shortcode allow path/dashboard -->
+                {{< dashboard/dashboard >}}
+            </div>
+            <div x-show="selected === 'item12'">
+                <!-- customers -->
+                {{< dashboard/customers >}}
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function mydashboard() {
+            return {
+
+                asideOpened: true,
+                selected: 'item11',
+                itemSelected: '',
+                item22Open: true,
+                item23Open: true ,
+                mouseover() {
+                    // Style cursor Property                      
+                    // this.$el.style.cursor = "pointer"
+                    // console.log("mouseover")
+                },
+                mouseleave() {
+                    // this.$el.style.cursor = "default"
+                    // console.log("mouseleave")
+                },
+
+            }
+        }    
+    </script>
+</section>   
+
+
+
+
+<!-- @keydown.window.escape="show = false"  vs @keydown.escape="show = false"-->
+<p class="is-size-1 has-text-info has-text-centered">bulma dropdown</p>
+<section class="section">
+    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
+                @keydown.window.escape="show = false">
+                <span>Dropdown button</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <!-- ? hover on dropdown content , highlight dropdown item -->
+        <div class="dropdown-menu" id="dropdown-menu" role="menu" @click.away="show = false">
+            <div class="dropdown-content" x-data="{hovered :''}">
+                <a href="https://www.google.com/" target="_blank" class="dropdown-item " @mouseenter="hovered='A'"
+                    :class="{ 'is-active': hovered ==='A'}">
+                    Google
+                </a>
+                <a href="/html/dropdown.html" target="_blank" class="dropdown-item" @mouseenter="hovered='B'"
+                    :class="{ 'is-active': hovered ==='B' }">
+                    Other dropdown item(#)
+                </a>
+
+                <a href="#" class="dropdown-item " @mouseenter="hovered='C'" :class="{ 'is-active': hovered ==='C' }">
+                    Active dropdown item
+                </a>
+                <a href="#" class="dropdown-item" @mouseenter="hovered='D'" :class="{ 'is-active': hovered ==='D' }">
+                    Other dropdown item
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item" @mouseenter="hovered='E'" :class="{ 'is-active': hovered ==='E' }">
+                    With a divider
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p class="has-text-primary">Pre-fetching a dropdown's HTML content on hover , HTML content is locate is static/html
+        directory</p>
+    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
+                @mouseenter.once="
+                fetch('/html/dropdown-partial.html')
+                .then(response => response.text())
+                .then(html => { $refs.output.innerHTML=html })
+                ">
+                <span>Dropdown button</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu" x-ref="output" @click.away="show = false">
+
+        </div>
+
+    </div>
+</section>
+<p class=" is-size-1 has-text-info has-text-centered">bulma card</p>
+<section class="section" x-data>
+    <p class="subtitle">data fetching with loading indicator button(ex.charizard,pidgeotto ,kakuna ,charmeleon)</p>
+    <div x-data="pokeSearch()" x-init="fetchPokemon()">
+        <h3 class="is-size-5 has-text-primary">
+            Data Fetch with fetch api
+        </h3>
+
+        <div>
+            <input type="text" name="pokemonSearch" x-model="pokemonSearch">
+            <!-- submit loading indicator -->
+            <button type="submit" @click="fetchPokemon()" :class="{'button is-loading': isLoading}"
+                :disabled="isLoading" disabled="">
+                Search
+            </button>
+        </div>
+        <template x-if="pokemon">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-96x96">
+                        <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <h3 class="has-text-black" x-text="pokemon.name"></h3>
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <template x-for="abilityObj in pokemon.abilities" :key="abilityObj.ability.url">
+                                <span x-text="abilityObj.ability.name" class="level-item has-text-centered"></span>
+                            </template>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+        </template>
+        <script type="text/javascript">
+
+            function pokeSearch() {
+                return {
+                    pokemonSearch: "charizard",
+                    // charizard,pidgeotto ,kakuna ,charmeleon
+                    pokemon: null,
+                    isLoading: false,
+                    fetchPokemon() {
+
+                        this.isLoading = true;
+                        fetch(`https://pokeapi.co/api/v2/pokemon/${this.pokemonSearch}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                this.isLoading = false;
+                                this.pokemon = data;
+                            });
+                    }
+                };
+            }
+
+        </script>
+    </div>
+</section>
+<p class=" is-size-1 has-text-danger has-text-centered">bulma popup modal</p>
+<section class="section" x-data>
+    <div class="container">
+        <section class="section" x-data="modalOp()" @keydown.escape="cancelModal()">
+            <!-- 新增 : @keydown.escape="cancelModal()  -->
+            <h1 class="title">Bulma Modal Confirmation</h1>
+            <p class="subtitle">Displays a modal when button pressed</p>
+            <!-- add modal popup default button -->
+            <button class="button" @click="showModal();$nextTick(() => $refs.modalCloseButton.focus())">Show
+                Modal</button>
+            <hr />
+            <p>Last Modal Confirmation: <span x-text="okPressed"></span></p>
+
+            <div class="modal" :class="{'is-active': showModalFlag}">
+                <div class="modal-background" @click="cancelModal()"></div> <!-- 新增 : @click="cancelModal()  -->
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Confirmation Modal</p>
+                        <button class="delete" aria-label="close" @click="cancelModal">></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <p x-text="message"></p>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success" @click="okModal">Ok</button>
+                        <button class="button" x-ref="modalCloseButton" @click="cancelModal">Cancel</button>
+                    </footer>
+                </div>
+            </div>
+            <script type="text/javascript">
+
+                function modalOp() {
+                    return {
+                        showModalFlag: false,
+                        okPressed: false,
+                        message: "Press 'Ok' or 'Cancel'.",
+                        showModal() {
+                            this.okPressed = false;
+                            this.showModalFlag = true;
+                        },
+                        okModal() {
+                            this.okPressed = true;
+                            this.showModalFlag = false;
+                        },
+                        cancelModal() {
+                            this.okPressed = false;
+                            this.showModalFlag = false;
+                        }
+                    }
+                }
+            </script>
+    </div>
+</section>
+<!-- Todo: image grid using bulma : refernce : https://www.youtube.com/watch?v=Ng1BL8piOcg -->
+
+
 <!-- accordion : https://demo.creativebulma.net/components/bulma-collapsible/1.0/usage/ -->
-<p class=" is-size-1 has-text-danger has-text-centered">Accordion  allow multiple selection option</p>
+<p class=" is-size-1 has-text-danger has-text-centered">Accordion allow multiple selection option</p>
 <section class="section">
     <!-- x-data : allow-multiple ,is-active as a kye, is not allowed -->
     <!-- setting option : multiple (true/false): allow multiple -->
-    <!-- Todo : accordion 傳入參數 with default value -->
-    <div  x-data="accordion()">
+
+    <!-- accordion(default=false),single exapnsion,傳入參數 true =>  multiple expansion -->
+    <div x-data="accordion()">
         <article class="message " style="margin: 0px;">
-            <div class="message-header " 
-                 style="border: 1px solid;height:40px;"  
-                 @click="f1Open=!f1Open;current='f1'"
-                 @mouseover="mouseover"
-                 @mouseleave="mouseleave"
-                   >
+            <div class="message-header " style="border: 1px solid;height:40px;" @click="f1Open=!f1Open;current='f1'"
+                @mouseover="mouseover" @mouseleave="mouseleave">
                 <!-- x-show ?? multiple contions -->
                 <div x-show="multiple?(f1Open || (current=='f1' && ! multiple)):current=='f1'">
                     <span class="icon is-large">
-                        <i class="fas  fa-caret-down"></i>                       
+                        <i class="fas  fa-caret-down"></i>
                     </span>
                     <span> Question 1 Collapse/Expand</span>
                 </div>
                 <div x-show="multiple?(!f1Open || (current!=='f1' && ! multiple)):current!=='f1' ">
                     <span class="icon is-large">
-                        <i class="fas fa-caret-right"></i>                        
+                        <i class="fas fa-caret-right"></i>
                     </span>
                     <span> Question 1 Collapse/Expand</span>
-                </div>          
+                </div>
                 <!-- <button class="delete" aria-label="delete"></button>       -->
             </div>
-            <div   class="message-body"  x-show="multiple?(f1Open || (f1Open && current=='f1') ):current=='f1'">
+            <div class="message-body" x-show="multiple?(f1Open || (f1Open && current=='f1') ):current=='f1'">
                 <div class="message-body-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
-                    placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
-                    <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-                    sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>,
+                    tempus quis
+                    placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
+                    diam, et dictum
+                    <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec
+                    sodales, arcu et
+                    sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna,
+                    vehicula et
                     sem eget, facilisis sodales sem.
                 </div>
             </div>
         </article>
         <article class="message" style="margin: 0px;">
-            <div class="message-header "
-                 style="border: 1px solid;height:40px;"  
-                 @click="f2Open=!f2Open;current='f2'" 
-                 @mouseover="mouseover"
-                 @mouseleave="mouseleave"
-                 >
-                <div x-show=" multiple?(f2Open || (current=='f2' && ! multiple)):current=='f2'" >
+            <div class="message-header " style="border: 1px solid;height:40px;" @click="f2Open=!f2Open;current='f2'"
+                @mouseover="mouseover" @mouseleave="mouseleave">
+                <div x-show=" multiple?(f2Open || (current=='f2' && ! multiple)):current=='f2'">
                     <span class="icon is-large">
-                        <i class="fas  fa-caret-down"></i>                       
+                        <i class="fas  fa-caret-down"></i>
                     </span>
                     <span> Question 2 Collapse/Expand</span>
                 </div>
                 <div x-show="multiple?(!f2Open || (current=='f2' && ! multiple)):current!=='f2' ">
                     <span class="icon is-large">
-                        <i class="fas fa-caret-right"></i>                        
+                        <i class="fas fa-caret-right"></i>
                     </span>
                     <span> Question 2 Collapse/Expand</span>
-                </div>       
+                </div>
                 <!-- <button class="delete" aria-label="delete"></button>          -->
             </div>
-            <div  class="message-body " x-show="multiple? (f2Open || (f2Open && current=='f2') ):current=='f2'" >
+            <div class="message-body " x-show="multiple? (f2Open || (f2Open && current=='f2') ):current=='f2'">
                 <div class="message-body-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
-                    placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
-                    <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-                    sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>,
+                    tempus quis
+                    placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
+                    diam, et dictum
+                    <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec
+                    sodales, arcu et
+                    sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna,
+                    vehicula et
                     sem eget, facilisis sodales sem.
                 </div>
             </div>
         </article>
         <article class="message  " style="margin: 0px;">
-            <div class="message-header "
-                 style="border: 1px solid;height:40px;"  
-                 @click="f3Open=!f3Open;current='f3'"
-                 @mouseover="mouseover"
-                 @mouseleave="mouseleave"
-                  >
-                <div x-show=" multiple?(f3Open || (current=='f3' && ! multiple)):current=='f3'" >
+            <div class="message-header " style="border: 1px solid;height:40px;" @click="f3Open=!f3Open;current='f3'"
+                @mouseover="mouseover" @mouseleave="mouseleave">
+                <div x-show=" multiple?(f3Open || (current=='f3' && ! multiple)):current=='f3'">
                     <span class="icon is-large">
-                        <i class="fas  fa-caret-down"></i>                       
+                        <i class="fas  fa-caret-down"></i>
                     </span>
                     <span> Question 2 Collapse/Expand</span>
                 </div>
                 <div x-show="multiple?(!f3Open || (current=='f3' && ! multiple)):current!=='f3' ">
                     <span class="icon is-large">
-                        <i class="fas fa-caret-right"></i>                        
+                        <i class="fas fa-caret-right"></i>
                     </span>
                     <span> Question 2 Collapse/Expand</span>
-                </div>      
+                </div>
                 <!-- <button class="delete" aria-label="delete"></button>           -->
             </div>
-            <div  class="message-body " x-show="multiple? (f3Open || (f3Open && current=='f3') ):current=='f3'" >
+            <div class="message-body " x-show="multiple? (f3Open || (f3Open && current=='f3') ):current=='f3'">
                 <div class="message-body-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
-                    placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
-                    <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
-                    sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>,
+                    tempus quis
+                    placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus
+                    diam, et dictum
+                    <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec
+                    sodales, arcu et
+                    sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna,
+                    vehicula et
                     sem eget, facilisis sodales sem.
                 </div>
             </div>
             <script type="text/javascript">
-                function accordion() {
+                function accordion(aMutiple = false) {
                     return {
-                        f1Open:false,
-                        f2Open:false,
-                        f3Open:false,
-                        current:'' ,
-                        multiple:false,                        
+                        f1Open: false,
+                        f2Open: false,
+                        f3Open: false,
+                        current: '',
+                        multiple: aMutiple,
                         mouseover() {
                             // Style cursor Property  
                             this.$el.style.cursor = "pointer"
@@ -989,6 +1187,8 @@ this is bulma.html
         </article>
     </div>
 </section>
+
+
 <!-- <section class="section">
     <nav class="navbar is-link is-fixed-bottom" role="navigation">
         <div class="navbar-brand">
