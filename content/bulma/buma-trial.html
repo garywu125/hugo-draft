@@ -6,6 +6,7 @@ draft: true
 
 <!-- todo 
     search input ???: Covid-19 Stats using bulma + alpine.js : https://richardkeep.dev/ https://github.com/richardkeep/covid-19
+    Snackbar :
     component: (stepper/carousel)
             display a title on Bulma carousel?
             - carousel images ,each image with tage information https://stackoverflow.com/questions/58380735/how-to-display-a-title-on-bulma-carousel (https://github.com/Wikiki/bulma-carousel/issues/78)
@@ -657,411 +658,6 @@ this is bulma.html
     </div>
 </section>
 
-<p class="is-size-1 has-text-info has-text-centered">bulma tab</p>
-<section class="section">
-
-    <div x-data="{tab:'tab1'}">
-        <div class="tabs is-boxed">
-            <ul>
-                <li :class="{ 'is-active' : tab === 'tab1'}">
-                    <a href="#" @click.prevent="tab = 'tab1'">
-                        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
-                        <span>Pictures</span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active' : tab === 'tab2'}">
-                    <a href="#" @click.prevent="tab = 'tab2'">
-                        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-                        <span>Music</span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active' : tab === 'tab3'}">
-                    <a href=" #" @click.prevent="tab = 'tab3'">
-                        <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
-                        <span>Videos</span>
-                    </a>
-                </li>
-                <li :class="{ 'is-active' : tab === 'tab4'}">
-                    <a href="#" @click.prevent="tab = 'tab4'">
-                        <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-                        <span>Documents</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div x-show="tab === 'tab1'" class="has-text-primary">
-            Tab1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-        <div x-show="tab === 'tab2'" class="has-text-link">
-            Tab2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-        <div x-show="tab === 'tab3'" class="has-text-dark">
-            Tab3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-        <div x-show="tab === 'tab4'" class="has-text-danger">
-            Tab4 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
-            consectetur
-            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
-            tempore
-            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
-        </div>
-    </div>
-</section>
-
-<p class="is-size-1 has-text-info has-text-centered">bulma vertical sidebar Collapsible menu </p>
-<section class="section" x-data="mydashboard()">
-    <header class="title has-text-centered">
-        <!-- <span class="is-pulled-left is-hidden-tablet"> -->
-        <span class="is-pulled-left ">
-            <span class="icon has-text-info"
-             @click="asideOpened=!asideOpened"
-             
-             >
-                <i class="fas fa-bars"></i>
-            </span>
-        </span>
-        <span>Dashboard</span>
-    </header>
-
-    <div class="columns">
-        <aside class="column is-narrow menu" x-show="asideOpened">
-            <!-- <aside class="menu column is-2 " >     -->
-            <p class="menu-label">
-                General
-            </p>
-            <ul class="menu-list">
-                <li><a href="#" @click.prevent="selected = 'item11';console.log(selected)"
-                        :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
-                <li><a href="#" @click.prevent="selected = 'item12';console.log(selected)"
-                        :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
-            </ul>
-            <p class="menu-label">
-                Administration
-            </p>
-            <ul class="menu-list">
-                <li><a href="#" @click.prevent="selected = 'item21' "
-                        :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
-                <li>
-                    <a href="#"
-                        @click.prevent="selected = 'item22';itemSelected = '' ; item22Open=!item22Open ">Manage
-                        Your Team
-                        <template x-if="item22Open">
-                            <span class="icon is-large">
-                                <i class="fas  fa-caret-down"></i>
-                            </span>
-                        </template>
-                        <template x-if="!item22Open">
-                            <span class="icon is-large">
-                                <i class="fas fa-caret-right"></i>
-                            </span>
-                        </template>
-                    </a>
-                    <template x-if="item22Open">
-                        <ul>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item221'; item22Open?selected='item221':selected=''  "
-                                    :class="{ 'is-active' : itemSelected === 'item221' && ( selected === 'item221' ) }">Members</a>
-                            </li>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item222' ; item22Open?selected='item222':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item222' && (selected === 'item222' ) }">Plugins</a>
-                            </li>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item223' ; item22Open?selected='item223':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item223' && ( selected === 'item223' )}">Add
-                                    a member</a></li>
-                        </ul>
-                    </template>
-                </li>
-                <li><a href="#" @click.prevent="selected = 'item23';itemSelected = '' ; item23Open=!item23Open ">
-                        workforce deploy
-                        <template x-if="item23Open">
-                            <span class="icon is-large">
-                                <i class="fas  fa-caret-down"></i>
-                            </span>
-                        </template>
-                        <template x-if="!item23Open">
-                            <span class="icon is-large">
-                                <i class="fas fa-caret-right"></i>
-                            </span>
-                        </template>
-                    </a>
-                    <template x-if="item23Open">
-                        <ul>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item231'; item23Open?selected='item231':selected=''  "
-                                    :class="{ 'is-active' : itemSelected === 'item231' && ( selected === 'item231' ) }">Members</a>
-                            </li>
-                            <!-- replace @click.prevent with @click -->
-                            <li><a href="https://www.google.com/" target="_blank"
-                                    @click="itemSelected = 'item232' ; item23Open?selected='item232':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item232' && (selected === 'item232' ) }">Google</a>
-                            </li>
-                            <li><a href="#"
-                                    @click.prevent="itemSelected = 'item233' ; item23Open?selected='item233':selected=''"
-                                    :class="{ 'is-active' : itemSelected === 'item233' && ( selected === 'item233' )}">Add
-                                    a member</a></li>
-                        </ul>
-                    </template>
-                </li>
-                <li><a href="#" @click.prevent="selected = 'item24'"
-                        :class="{ 'is-active' : selected === 'item24'}">Cloud Storage Settings</a>
-                </li>
-                <li><a href="#" @click.prevent="selected = 'item25'"
-                        :class="{ 'is-active' : selected === 'item25'}">Authentication</a></li>
-            </ul>
-            <p class="menu-label">
-                Transactions
-            </p>
-            <ul class="menu-list">
-                <li><a href="#" @click.prevent="selected = 'item31'"
-                        :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
-                <li><a href="#" @click.prevent="selected = 'item32'"
-                        :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
-                <li><a href="#" @click.prevent="selected = 'item33'"
-                        :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
-            </ul>
-        </aside>
-
-
-
-        <!-- 警告 :不使用 <main> tag,改用 <div> tag , 否則會hugo has bug , will generate wrong code -->
-        <div class="column">
-            <!-- 警告 :
-                只能使用 <div x-show="expression" > ,
-                 不能用 <template x-if="expression"> -->
-            <nav class="breadcrumb is-small" aria-label=breadcrumbs>
-                <ul>
-                    <li><a href=#>General</a></li>
-                    <li class="is-active"><a href="#" x-text="selected"></a></li>
-                </ul>
-            </nav>
-
-            <div x-show="selected === 'item11'">
-                <!-- *** hugo shortcode allow path/dashboard -->
-                {{< dashboard/dashboard >}}
-            </div>
-            <div x-show="selected === 'item12'">
-                <!-- customers -->
-                {{< dashboard/customers >}}
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        function mydashboard() {
-            return {
-
-                asideOpened: true,
-                selected: 'item11',
-                itemSelected: '',
-                item22Open: true,
-                item23Open: true ,
-                mouseover() {
-                    // Style cursor Property                      
-                    // this.$el.style.cursor = "pointer"
-                    // console.log("mouseover")
-                },
-                mouseleave() {
-                    // this.$el.style.cursor = "default"
-                    // console.log("mouseleave")
-                },
-
-            }
-        }    
-    </script>
-</section>   
-
-
-
-
-<!-- @keydown.window.escape="show = false"  vs @keydown.escape="show = false"-->
-<p class="is-size-1 has-text-info has-text-centered">bulma dropdown</p>
-<section class="section">
-    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
-        <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
-                @keydown.window.escape="show = false">
-                <span>Dropdown button</span>
-                <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-            </button>
-        </div>
-        <!-- ? hover on dropdown content , highlight dropdown item -->
-        <div class="dropdown-menu" id="dropdown-menu" role="menu" @click.away="show = false">
-            <div class="dropdown-content" x-data="{hovered :''}">
-                <a href="https://www.google.com/" target="_blank" class="dropdown-item " @mouseenter="hovered='A'"
-                    :class="{ 'is-active': hovered ==='A'}">
-                    Google
-                </a>
-                <a href="/html/dropdown.html" target="_blank" class="dropdown-item" @mouseenter="hovered='B'"
-                    :class="{ 'is-active': hovered ==='B' }">
-                    Other dropdown item(#)
-                </a>
-
-                <a href="#" class="dropdown-item " @mouseenter="hovered='C'" :class="{ 'is-active': hovered ==='C' }">
-                    Active dropdown item
-                </a>
-                <a href="#" class="dropdown-item" @mouseenter="hovered='D'" :class="{ 'is-active': hovered ==='D' }">
-                    Other dropdown item
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item" @mouseenter="hovered='E'" :class="{ 'is-active': hovered ==='E' }">
-                    With a divider
-                </a>
-            </div>
-        </div>
-    </div>
-    <br>
-    <p class="has-text-primary">Pre-fetching a dropdown's HTML content on hover , HTML content is locate is static/html
-        directory</p>
-    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
-        <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
-                @mouseenter.once="
-                fetch('/html/dropdown-partial.html')
-                .then(response => response.text())
-                .then(html => { $refs.output.innerHTML=html })
-                ">
-                <span>Dropdown button</span>
-                <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-            </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu" x-ref="output" @click.away="show = false">
-
-        </div>
-
-    </div>
-</section>
-<p class=" is-size-1 has-text-info has-text-centered">bulma card</p>
-<section class="section" x-data>
-    <p class="subtitle">data fetching with loading indicator button(ex.charizard,pidgeotto ,kakuna ,charmeleon)</p>
-    <div x-data="pokeSearch()" x-init="fetchPokemon()">
-        <h3 class="is-size-5 has-text-primary">
-            Data Fetch with fetch api
-        </h3>
-
-        <div>
-            <input type="text" name="pokemonSearch" x-model="pokemonSearch">
-            <!-- submit loading indicator -->
-            <button type="submit" @click="fetchPokemon()" :class="{'button is-loading': isLoading}"
-                :disabled="isLoading" disabled="">
-                Search
-            </button>
-        </div>
-        <template x-if="pokemon">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-96x96">
-                        <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
-                    </figure>
-                </div>
-                <div class="card-content">
-                    <h3 class="has-text-black" x-text="pokemon.name"></h3>
-                    <nav class="level is-mobile">
-                        <div class="level-left">
-                            <template x-for="abilityObj in pokemon.abilities" :key="abilityObj.ability.url">
-                                <span x-text="abilityObj.ability.name" class="level-item has-text-centered"></span>
-                            </template>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-
-        </template>
-        <script type="text/javascript">
-
-            function pokeSearch() {
-                return {
-                    pokemonSearch: "charizard",
-                    // charizard,pidgeotto ,kakuna ,charmeleon
-                    pokemon: null,
-                    isLoading: false,
-                    fetchPokemon() {
-
-                        this.isLoading = true;
-                        fetch(`https://pokeapi.co/api/v2/pokemon/${this.pokemonSearch}`)
-                            .then(res => res.json())
-                            .then(data => {
-                                this.isLoading = false;
-                                this.pokemon = data;
-                            });
-                    }
-                };
-            }
-
-        </script>
-    </div>
-</section>
-<p class=" is-size-1 has-text-danger has-text-centered">bulma popup modal</p>
-<section class="section" x-data>
-    <div class="container">
-        <section class="section" x-data="modalOp()" @keydown.escape="cancelModal()">
-            <!-- 新增 : @keydown.escape="cancelModal()  -->
-            <h1 class="title">Bulma Modal Confirmation</h1>
-            <p class="subtitle">Displays a modal when button pressed</p>
-            <!-- add modal popup default button -->
-            <button class="button" @click="showModal();$nextTick(() => $refs.modalCloseButton.focus())">Show
-                Modal</button>
-            <hr />
-            <p>Last Modal Confirmation: <span x-text="okPressed"></span></p>
-
-            <div class="modal" :class="{'is-active': showModalFlag}">
-                <div class="modal-background" @click="cancelModal()"></div> <!-- 新增 : @click="cancelModal()  -->
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Confirmation Modal</p>
-                        <button class="delete" aria-label="close" @click="cancelModal">></button>
-                    </header>
-                    <section class="modal-card-body">
-                        <p x-text="message"></p>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success" @click="okModal">Ok</button>
-                        <button class="button" x-ref="modalCloseButton" @click="cancelModal">Cancel</button>
-                    </footer>
-                </div>
-            </div>
-            <script type="text/javascript">
-
-                function modalOp() {
-                    return {
-                        showModalFlag: false,
-                        okPressed: false,
-                        message: "Press 'Ok' or 'Cancel'.",
-                        showModal() {
-                            this.okPressed = false;
-                            this.showModalFlag = true;
-                        },
-                        okModal() {
-                            this.okPressed = true;
-                            this.showModalFlag = false;
-                        },
-                        cancelModal() {
-                            this.okPressed = false;
-                            this.showModalFlag = false;
-                        }
-                    }
-                }
-            </script>
-    </div>
-</section>
-<!-- Todo: image grid using bulma : refernce : https://www.youtube.com/watch?v=Ng1BL8piOcg -->
-
 
 <!-- accordion : https://demo.creativebulma.net/components/bulma-collapsible/1.0/usage/ -->
 <p class=" is-size-1 has-text-danger has-text-centered">Accordion allow multiple selection option</p>
@@ -1187,6 +783,559 @@ this is bulma.html
         </article>
     </div>
 </section>
+
+<p class="is-size-1 has-text-info has-text-centered">bulma tab</p>
+<section class="section">
+
+    <div x-data="{tab:'tab1'}">
+        <div class="tabs is-boxed">
+            <ul>
+                <li :class="{ 'is-active' : tab === 'tab1'}">
+                    <a href="#" @click.prevent="tab = 'tab1'">
+                        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+                        <span>Pictures</span>
+                    </a>
+                </li>
+                <li :class="{ 'is-active' : tab === 'tab2'}">
+                    <a href="#" @click.prevent="tab = 'tab2'">
+                        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+                        <span>Music</span>
+                    </a>
+                </li>
+                <li :class="{ 'is-active' : tab === 'tab3'}">
+                    <a href=" #" @click.prevent="tab = 'tab3'">
+                        <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
+                        <span>Videos</span>
+                    </a>
+                </li>
+                <li :class="{ 'is-active' : tab === 'tab4'}">
+                    <a href="#" @click.prevent="tab = 'tab4'">
+                        <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
+                        <span>Documents</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div x-show="tab === 'tab1'" class="has-text-primary">
+            Tab1 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+        <div x-show="tab === 'tab2'" class="has-text-link">
+            Tab2 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+        <div x-show="tab === 'tab3'" class="has-text-dark">
+            Tab3 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+        <div x-show="tab === 'tab4'" class="has-text-danger">
+            Tab4 content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt sunt,
+            consectetur
+            eos quod perferendis mollitia consequuntur natus, porro molestiae qui iusto deserunt rerum
+            tempore
+            voluptatum itaque. Ad, nisi esse cum quidem consequuntur ullam obcaecati.
+        </div>
+    </div>
+</section>
+
+
+
+<p class="is-size-1 has-text-info has-text-centered">bulma vertical sidebar Collapsible menu </p>
+<section class="section" x-data="mydashboard()">
+    <header class="title has-text-centered">
+        <!-- <span class="is-pulled-left is-hidden-tablet"> -->
+        <span class="is-pulled-left ">
+            <span class="icon has-text-info" @click="asideOpened=!asideOpened">
+                <i class="fas fa-bars"></i>
+            </span>
+        </span>
+        <span>Dashboard</span>
+    </header>
+
+    <div class="columns">
+        <aside class="column is-narrow menu" x-show="asideOpened">
+            <!-- <aside class="menu column is-2 " >     -->
+            <p class="menu-label">
+                General
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item11';console.log(selected)"
+                        :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
+                <li><a href="#" @click.prevent="selected = 'item12';console.log(selected)"
+                        :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
+            </ul>
+            <p class="menu-label">
+                Administration
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item21' "
+                        :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
+                <li>
+                    <a href="#" @click.prevent="selected = 'item22';itemSelected = '' ; item22Open=!item22Open ">Manage
+                        Your Team
+                        <template x-if="item22Open">
+                            <span class="icon is-large">
+                                <i class="fas  fa-caret-down"></i>
+                            </span>
+                        </template>
+                        <template x-if="!item22Open">
+                            <span class="icon is-large">
+                                <i class="fas fa-caret-right"></i>
+                            </span>
+                        </template>
+                    </a>
+                    <template x-if="item22Open">
+                        <ul>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item221'; item22Open?selected='item221':selected=''  "
+                                    :class="{ 'is-active' : itemSelected === 'item221' && ( selected === 'item221' ) }">Members</a>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item222' ; item22Open?selected='item222':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item222' && (selected === 'item222' ) }">Plugins</a>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item223' ; item22Open?selected='item223':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item223' && ( selected === 'item223' )}">Add
+                                    a member</a></li>
+                        </ul>
+                    </template>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item23';itemSelected = '' ; item23Open=!item23Open ">
+                        workforce deploy
+                        <template x-if="item23Open">
+                            <span class="icon is-large">
+                                <i class="fas  fa-caret-down"></i>
+                            </span>
+                        </template>
+                        <template x-if="!item23Open">
+                            <span class="icon is-large">
+                                <i class="fas fa-caret-right"></i>
+                            </span>
+                        </template>
+                    </a>
+                    <template x-if="item23Open">
+                        <ul>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item231'; item23Open?selected='item231':selected=''  "
+                                    :class="{ 'is-active' : itemSelected === 'item231' && ( selected === 'item231' ) }">Members</a>
+                            </li>
+                            <!-- replace @click.prevent with @click -->
+                            <li><a href="https://www.google.com/" target="_blank"
+                                    @click="itemSelected = 'item232' ; item23Open?selected='item232':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item232' && (selected === 'item232' ) }">Google</a>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="itemSelected = 'item233' ; item23Open?selected='item233':selected=''"
+                                    :class="{ 'is-active' : itemSelected === 'item233' && ( selected === 'item233' )}">Add
+                                    a member</a></li>
+                        </ul>
+                    </template>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item24'"
+                        :class="{ 'is-active' : selected === 'item24'}">Cloud Storage Settings</a>
+                </li>
+                <li><a href="#" @click.prevent="selected = 'item25'"
+                        :class="{ 'is-active' : selected === 'item25'}">Authentication</a></li>
+            </ul>
+            <p class="menu-label">
+                Transactions
+            </p>
+            <ul class="menu-list">
+                <li><a href="#" @click.prevent="selected = 'item31'"
+                        :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
+                <li><a href="#" @click.prevent="selected = 'item32'"
+                        :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
+                <li><a href="#" @click.prevent="selected = 'item33'"
+                        :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
+            </ul>
+        </aside>
+
+
+
+        <!-- 警告 :不使用 <main> tag,改用 <div> tag , 否則會hugo has bug , will generate wrong code -->
+        <div class="column">
+            <!-- 警告 :
+                只能使用 <div x-show="expression" > ,
+                 不能用 <template x-if="expression"> -->
+            <nav class="breadcrumb is-small" aria-label=breadcrumbs>
+                <ul>
+                    <li><a href=#>General</a></li>
+                    <li class="is-active"><a href="#" x-text="selected"></a></li>
+                </ul>
+            </nav>
+
+            <div x-show="selected === 'item11'">
+                <!-- *** hugo shortcode allow path/dashboard -->
+                {{< dashboard/dashboard >}}
+            </div>
+            <div x-show="selected === 'item12'">
+                <!-- customers -->
+                {{< dashboard/customers >}}
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function mydashboard() {
+            return {
+                asideOpened: true,
+                selected: 'item11',
+                itemSelected: '',
+                item22Open: true,
+                item23Open: true,
+                mouseover() {
+                    // Style cursor Property                      
+                    // this.$el.style.cursor = "pointer"
+                    // console.log("mouseover")
+                },
+                mouseleave() {
+                    // this.$el.style.cursor = "default"
+                    // console.log("mouseleave")
+                },
+
+            }
+        }    
+    </script>
+</section>
+
+
+
+
+<!-- @keydown.window.escape="show = false"  vs @keydown.escape="show = false"-->
+<p class="is-size-1 has-text-info has-text-centered">bulma dropdown</p>
+<section class="section">
+    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
+                @keydown.window.escape="show = false">
+                <span>Dropdown button</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <!-- ? hover on dropdown content , highlight dropdown item -->
+        <div class="dropdown-menu" id="dropdown-menu" role="menu" @click.away="show = false">
+            <div class="dropdown-content" x-data="{hovered :''}">
+                <a href="https://www.google.com/" target="_blank" class="dropdown-item " @mouseenter="hovered='A'"
+                    :class="{ 'is-active': hovered ==='A'}">
+                    Google
+                </a>
+                <a href="/html/dropdown.html" target="_blank" class="dropdown-item" @mouseenter="hovered='B'"
+                    :class="{ 'is-active': hovered ==='B' }">
+                    Other dropdown item(#)
+                </a>
+
+                <a href="#" class="dropdown-item " @mouseenter="hovered='C'" :class="{ 'is-active': hovered ==='C' }">
+                    Active dropdown item
+                </a>
+                <a href="#" class="dropdown-item" @mouseenter="hovered='D'" :class="{ 'is-active': hovered ==='D' }">
+                    Other dropdown item
+                </a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item" @mouseenter="hovered='E'" :class="{ 'is-active': hovered ==='E' }">
+                    With a divider
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <p class="has-text-primary">Pre-fetching a dropdown's HTML content on hover , HTML content is locate is static/html
+        directory</p>
+    <div class="dropdown " :class="{'is-active': show}" x-data={show:false}>
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="show = true"
+                @mouseenter.once="
+                fetch('/html/dropdown-partial.html')
+                .then(response => response.text())
+                .then(html => { $refs.output.innerHTML=html })
+                ">
+                <span>Dropdown button</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu" x-ref="output" @click.away="show = false">
+
+        </div>
+
+    </div>
+</section>
+
+
+<p class=" is-size-1 has-text-info has-text-centered">bulma card</p>
+<section class="section" x-data>
+    <p class="subtitle">data fetching with loading indicator button(ex.charizard,pidgeotto ,kakuna ,charmeleon)</p>
+    <div x-data="pokeSearch()" x-init="fetchPokemon()">
+        <h3 class="is-size-5 has-text-primary">
+            Data Fetch with fetch api
+        </h3>
+
+        <div>
+            <input type="text" name="pokemonSearch" x-model="pokemonSearch">
+            <!-- submit loading indicator -->
+            <button type="submit" @click="fetchPokemon()" :class="{'button is-loading': isLoading}"
+                :disabled="isLoading" disabled="">
+                Search
+            </button>
+        </div>
+        <template x-if="pokemon">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-96x96">
+                        <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <h3 class="has-text-black" x-text="pokemon.name"></h3>
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <template x-for="abilityObj in pokemon.abilities" :key="abilityObj.ability.url">
+                                <span x-text="abilityObj.ability.name" class="level-item has-text-centered"></span>
+                            </template>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+        </template>
+        <script type="text/javascript">
+
+            function pokeSearch() {
+                return {
+                    pokemonSearch: "charizard",
+                    // charizard,pidgeotto ,kakuna ,charmeleon
+                    pokemon: null,
+                    isLoading: false,
+                    fetchPokemon() {
+
+                        this.isLoading = true;
+                        fetch(`https://pokeapi.co/api/v2/pokemon/${this.pokemonSearch}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                this.isLoading = false;
+                                this.pokemon = data;
+                            });
+                    }
+                };
+            }
+
+        </script>
+    </div>
+</section>
+<p class=" is-size-1 has-text-danger has-text-centered">bulma popup modal</p>
+<section class="section" x-data>
+    <div class="container">
+        <section class="section" x-data="modalOp()" @keydown.escape="cancelModal()">
+            <!-- 新增 : @keydown.escape="cancelModal()  -->
+            <h1 class="title">Bulma Modal Confirmation</h1>
+            <p class="subtitle">Displays a modal when button pressed</p>
+            <!-- add modal popup default button -->
+            <button class="button" @click="showModal();$nextTick(() => $refs.modalCloseButton.focus())">Show
+                Modal</button>
+            <hr />
+            <p>Last Modal Confirmation: <span x-text="okPressed"></span></p>
+
+            <div class="modal" :class="{'is-active': showModalFlag}">
+                <div class="modal-background" @click="cancelModal()"></div> <!-- 新增 : @click="cancelModal()  -->
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">Confirmation Modal</p>
+                        <button class="delete" aria-label="close" @click="cancelModal">></button>
+                    </header>
+                    <section class="modal-card-body">
+                        <p x-text="message"></p>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success" @click="okModal">Ok</button>
+                        <button class="button" x-ref="modalCloseButton" @click="cancelModal">Cancel</button>
+                    </footer>
+                </div>
+            </div>
+            <script type="text/javascript">
+
+                function modalOp() {
+                    return {
+                        showModalFlag: false,
+                        okPressed: false,
+                        message: "Press 'Ok' or 'Cancel'.",
+                        showModal() {
+                            this.okPressed = false;
+                            this.showModalFlag = true;
+                        },
+                        okModal() {
+                            this.okPressed = true;
+                            this.showModalFlag = false;
+                        },
+                        cancelModal() {
+                            this.okPressed = false;
+                            this.showModalFlag = false;
+                        }
+                    }
+                }
+            </script>
+    </div>
+</section>
+<!-- Todo: image grid using bulma : refernce : https://www.youtube.com/watch?v=Ng1BL8piOcg -->
+
+<p class="is-size-1 has-text-info has-text-centered">sidebar using bulma dropdown</p>
+<section class="section">
+    <div class="dropdown " :class="{'is-active': asideOpened}" x-data="mypulldown()" >
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="asideOpened = true"
+                @keydown.window.escape="asideOpened = false">
+                <span>Dropdown button</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <!-- ? hover on dropdown content , highlight dropdown item -->
+        <div class="dropdown-menu" id="dropdown-menu" role="menu" @click.away="asideOpened = false" style="width: 220px">
+            <div class="dropdown-content" >
+                <div class="columns">
+                    <aside class="column is-narrow menu" x-show="asideOpened">
+                        <!-- <aside class="menu column is-2 " >     -->
+                        <p class="menu-label">
+                            General
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="#" @click.prevent="selected = 'item11';console.log(selected)"
+                                    :class="{ 'is-active' : selected === 'item11'}">Dashboard</a></li>
+                            <li><a href="#" @click.prevent="selected = 'item12';console.log(selected)"
+                                    :class="{ 'is-active' : selected === 'item12'}">Customers</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Administration
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="#" @click.prevent="selected = 'item21' "
+                                    :class="{ 'is-active' : selected === 'item21'}">Team Settings</a></li>
+                            <li>
+                                <a href="#"
+                                    @click.prevent="selected = 'item22';itemSelected = '' ; item22Open=!item22Open ">Manage
+                                    Your Team
+                                    <template x-if="item22Open">
+                                        <span class="icon is-large">
+                                            <i class="fas  fa-caret-down"></i>
+                                        </span>
+                                    </template>
+                                    <template x-if="!item22Open">
+                                        <span class="icon is-large">
+                                            <i class="fas fa-caret-right"></i>
+                                        </span>
+                                    </template>
+                                </a>
+                                <template x-if="item22Open">
+                                    <ul>
+                                        <li><a href="#"
+                                                @click.prevent="itemSelected = 'item221'; item22Open?selected='item221':selected=''  "
+                                                :class="{ 'is-active' : itemSelected === 'item221' && ( selected === 'item221' ) }">Members</a>
+                                        </li>
+                                        <li><a href="#"
+                                                @click.prevent="itemSelected = 'item222' ; item22Open?selected='item222':selected=''"
+                                                :class="{ 'is-active' : itemSelected === 'item222' && (selected === 'item222' ) }">Plugins</a>
+                                        </li>
+                                        <li><a href="#"
+                                                @click.prevent="itemSelected = 'item223' ; item22Open?selected='item223':selected=''"
+                                                :class="{ 'is-active' : itemSelected === 'item223' && ( selected === 'item223' )}">Add
+                                                a member</a></li>
+                                    </ul>
+                                </template>
+                            </li>
+                            <li><a href="#"
+                                    @click.prevent="selected = 'item23';itemSelected = '' ; item23Open=!item23Open ">
+                                    workforce deploy
+                                    <template x-if="item23Open">
+                                        <span class="icon is-large">
+                                            <i class="fas  fa-caret-down"></i>
+                                        </span>
+                                    </template>
+                                    <template x-if="!item23Open">
+                                        <span class="icon is-large">
+                                            <i class="fas fa-caret-right"></i>
+                                        </span>
+                                    </template>
+                                </a>
+                                <template x-if="item23Open">
+                                    <ul>
+                                        <li><a href="#"
+                                                @click.prevent="itemSelected = 'item231'; item23Open?selected='item231':selected=''  "
+                                                :class="{ 'is-active' : itemSelected === 'item231' && ( selected === 'item231' ) }">Members</a>
+                                        </li>
+                                        <!-- replace @click.prevent with @click -->
+                                        <li><a href="https://www.google.com/" target="_blank"
+                                                @click="itemSelected = 'item232' ; item23Open?selected='item232':selected=''"
+                                                :class="{ 'is-active' : itemSelected === 'item232' && (selected === 'item232' ) }">Google</a>
+                                        </li>
+                                        <li><a href="#"
+                                                @click.prevent="itemSelected = 'item233' ; item23Open?selected='item233':selected=''"
+                                                :class="{ 'is-active' : itemSelected === 'item233' && ( selected === 'item233' )}">Add
+                                                a member</a></li>
+                                    </ul>
+                                </template>
+                            </li>
+                            <li><a href="#" @click.prevent="selected = 'item24'"
+                                    :class="{ 'is-active' : selected === 'item24'}">Cloud Storage Settings</a>
+                            </li>
+                            <li><a href="#" @click.prevent="selected = 'item25'"
+                                    :class="{ 'is-active' : selected === 'item25'}">Authentication</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Transactions
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="#" @click.prevent="selected = 'item31'"
+                                    :class="{ 'is-active' : selected === 'item31'}">Payments</a></li>
+                            <li><a href="#" @click.prevent="selected = 'item32'"
+                                    :class="{ 'is-active' : selected === 'item32'}">Transfers</a></li>
+                            <li><a href="#" @click.prevent="selected = 'item33'"
+                                    :class="{ 'is-active' : selected === 'item33'}">Balance</a></li>
+                        </ul>
+                    </aside>                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function mypulldown() {
+            return {
+
+                asideOpened: true,
+                hovered :'',
+                selected: 'item11',
+                itemSelected: '',
+                item22Open: true,
+                item23Open: true ,
+                mouseover() {
+                    // Style cursor Property                      
+                    // this.$el.style.cursor = "pointer"
+                    // console.log("mouseover")
+                },
+                mouseleave() {
+                    // this.$el.style.cursor = "default"
+                    // console.log("mouseleave")
+                },
+
+            }
+        }    
+    </script>
+</section>
+
+
+
+
+
 
 
 <!-- <section class="section">
